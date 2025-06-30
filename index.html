@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Find luxury Homes, villas, penthouses, and land with HomeFinder. Connect with trusted agents in Nigeria.">
+  <meta name="description"
+    content="Find luxury Homes, villas, penthouses, and land with HomeFinder. Connect with trusted agents in Nigeria.">
   <meta name="keywords" content="Homes, villas, penthouses, land, rentals, luxury homes, real estate, Nigeria">
   <title>HomeFinder - Luxury Living</title>
   <!-- Bootstrap CSS -->
@@ -25,7 +26,12 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: 'Roboto', sans-serif;
       font-weight: 700;
       color: #003087;
@@ -67,7 +73,7 @@
     }
 
     .navbar-logo {
-      height: 32px;
+      height: 100px;
       width: auto;
       margin-right: 0.5rem;
     }
@@ -80,7 +86,7 @@
     }
 
     .nav-link {
-      color: #1a1a1a;
+      color: #003087;
       font-weight: 500;
       font-size: 0.9rem;
       display: flex;
@@ -111,7 +117,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1rem;
-      color: #1a1a1a;
+      color: #003087;
       cursor: pointer;
       transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.2s ease;
       border: 1px solid #e2e8f0;
@@ -143,11 +149,13 @@
     .offcanvas .navbar-nav {
       display: block;
     }
-.offcanvas {
-  height: 100vh !important;
-}
+
+    .offcanvas {
+      height: 100vh !important;
+    }
+
     .offcanvas .nav-link {
-      color: #1a1a1a;
+      color: #003087;
       font-size: 1rem;
       padding: 0.5rem 1rem;
       border-radius: 12px;
@@ -252,8 +260,13 @@
     }
 
     @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
     }
 
     /* home-Style Card */
@@ -575,11 +588,25 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    .social-icon.facebook:hover { color: #1877F2; }
-    .social-icon.twitter:hover { color: #1DA1F2; }
-    .social-icon.instagram:hover { color: #E4405F; }
-    .social-icon.whatsapp:hover { color: #25D366; }
-    .social-icon.tiktok:hover { color: #010101; }
+    .social-icon.facebook:hover {
+      color: #1877F2;
+    }
+
+    .social-icon.twitter:hover {
+      color: #1DA1F2;
+    }
+
+    .social-icon.instagram:hover {
+      color: #E4405F;
+    }
+
+    .social-icon.whatsapp:hover {
+      color: #25D366;
+    }
+
+    .social-icon.tiktok:hover {
+      color: #010101;
+    }
 
     .footer-links {
       list-style: none;
@@ -692,7 +719,7 @@
       }
 
       .navbar-logo {
-        height: 28px;
+        height: 50px;
       }
 
       .navbar-brand {
@@ -770,120 +797,148 @@
         content: none;
       }
     }
-    .search-card .btn-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 1001;
-  background-color: #fff;
-  opacity: 1;
-  padding: 0.5rem;
-}
 
-@media (max-width: 767px) {
-  .search-card {
-    position: relative;
-    margin-top: 1rem;
-  }
-}
+    .search-card .btn-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1001;
+      background-color: #fff;
+      opacity: 1;
+      padding: 0.5rem;
+    }
+
+    @media (max-width: 767px) {
+      .search-card {
+        position: relative;
+        margin-top: 1rem;
+      }
+    }
   </style>
 </head>
 
 <body>
   <!-- Header (Navbar + Search) -->
-<header class="header" data-aos="fade-down">
-  <div class="header-container">
-    <nav class="navbar">
-      <a class="navbar-brand" href="index.html">
-        <img src="assets/logo.png" alt="HomeFinder Logo" class="navbar-logo">
-        HomeFinder
-      </a>
-      <ul class="navbar-nav d-none d-md-flex">
-        <li class="nav-item">
-          <a class="nav-link active" href="home.html" aria-current="page"><i class="fas fa-home"></i> Homes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="land.html"><i class="fas fa-map"></i> Lands</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link profile-icon" href="#" aria-label="User Profile"><i class="fas fa-user"></i></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Become a host</a>
-        </li>
-      </ul>
-      <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Off-canvas for Navbar on Small Screens -->
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <header class="header" data-aos="fade-down">
+    <div class="header-container">
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/logo.png" alt="HomeFinder Logo" class="navbar-logo">
+          HomeFinder
+        </a>
+        <ul class="navbar-nav d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html" aria-current="page" title="Browse apartments for lease"><i
+                class="fas fa-building"></i> Apartments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="home.html" title="Browse homes for sale"><i class="fas fa-home"></i> Homes for
+              Sale</a>  
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="land.html" title="Browse lands for sale"><i class="fas fa-map"></i> Lands for
+              Sale</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inbox.html" aria-label="Messages" title="View your messages"><i
+                class="fas fa-envelope profile-icon"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-icon" href="#" aria-label="User Profile" title="Your profile"><i
+                class="fas fa-user"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" title="List your property">Become a Host</a>
+          </li>
+        </ul>
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#navbarOffcanvas" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Off-canvas for Navbar on Small Screens -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas"
+          aria-labelledby="navbarOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html" aria-current="page" title="Browse apartments for lease"><i
+                    class="fas fa-building"></i> Apartments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="home.html" title="Browse homes for sale"><i class="fas fa-home"></i> Homes for
+                  Sale</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="land.html" title="Browse lands for sale"><i class="fas fa-map"></i> Lands for
+                  Sale</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="inbox.html" title="View your messages"><i class="fas fa-envelope"></i>
+                  Messages</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" title="List your property"><i class="fas fa-plus-circle"></i> Become a
+                  Host</a>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="search-button" title="Search properties"><i class="fas fa-search"></i>
+                  Search</button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="home.html" aria-current="page"><i class="fas fa-home"></i> Homes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fas fa-map"></i> Lands</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Become a host</a>
-            </li>
-            <!-- Added Search Button -->
-            <li class="nav-item">
-              <button class="nav-link" id="search-button"><i class="fas fa-search"></i> Search</button>
-            </li>
-          </ul>
-        </div>
+      </nav>
+      <!-- Modified Search Card with Close Button -->
+      <div class="search-card d-md-block d-none" data-aos="fade-up" data-aos-delay="200">
+        <button class="btn-close d-md-none" id="search-close" aria-label="Close Search"></button>
+        <form class="search-form" id="search-form" aria-label="Search Properties">
+          <div class="input-group">
+            <span class="input-group-text" id="location-addon"><i class="fas fa-map-marker-alt"></i></span>
+            <input type="text" class="form-control" placeholder="Location" aria-label="Location" list="locations"
+              aria-describedby="location-addon">
+            <datalist id="locations">
+              <option value="Lagos">
+              <option value="Abuja">
+              <option value="Rivers">
+              <option value="Kano">
+              <option value="Oyo">
+              <option value="Ekiti">
+            </datalist>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="min-price-addon"><i class="fas fa-money-bill-wave"></i></span>
+            <input type="number" class="form-control" placeholder="Min Price" aria-label="Minimum Price"
+              aria-describedby="min-price-addon">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="max-price-addon"><i class="fas fa-money-bill-wave"></i></span>
+            <input type="number" class="form-control" placeholder="Max Price" aria-label="Maximum Price"
+              aria-describedby="max-price-addon">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="amenities-addon"><i class="fas fa-concierge-bell"></i></span>
+            <select class="form-select" aria-label="Amenities" aria-describedby="amenities-addon">
+              <option selected>Amenities</option>
+              <option value="pool">Pool</option>
+              <option value="gym">Gym</option>
+              <option value="pet">Pet-Friendly</option>
+              <option value="smart">Smart Home</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" aria-label="Search Properties">Search</button>
+        </form>
       </div>
-    </nav>
-    <!-- Modified Search Card with Close Button -->
-    <div class="search-card d-md-block d-none" data-aos="fade-up" data-aos-delay="200">
-      <button class="btn-close d-md-none" id="search-close" aria-label="Close Search"></button>
-      <form class="search-form" id="search-form" aria-label="Search Properties">
-        <div class="input-group">
-          <span class="input-group-text" id="location-addon"><i class="fas fa-map-marker-alt"></i></span>
-          <input type="text" class="form-control" placeholder="Location" aria-label="Location" list="locations" aria-describedby="location-addon">
-          <datalist id="locations">
-            <option value="Lagos">
-            <option value="Abuja">
-            <option value="Rivers">
-            <option value="Kano">
-            <option value="Oyo">
-            <option value="Ekiti">
-          </datalist>
-        </div>
-        <div class="input-group">
-          <span class="input-group-text" id="min-price-addon"><i class="fas fa-money-bill-wave"></i></span>
-          <input type="number" class="form-control" placeholder="Min Price" aria-label="Minimum Price" aria-describedby="min-price-addon">
-        </div>
-        <div class="input-group">
-          <span class="input-group-text" id="max-price-addon"><i class="fas fa-money-bill-wave"></i></span>
-          <input type="number" class="form-control" placeholder="Max Price" aria-label="Maximum Price" aria-describedby="max-price-addon">
-        </div>
-        <div class="input-group">
-          <span class="input-group-text" id="amenities-addon"><i class="fas fa-concierge-bell"></i></span>
-          <select class="form-select" aria-label="Amenities" aria-describedby="amenities-addon">
-            <option selected>Amenities</option>
-            <option value="pool">Pool</option>
-            <option value="gym">Gym</option>
-            <option value="pet">Pet-Friendly</option>
-            <option value="smart">Smart Home</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary" aria-label="Search Properties">Search</button>
-      </form>
     </div>
-  </div>
-</header>
+  </header>
   <!-- Available Properties Section -->
   <section class="py-5" data-aos="fade-up">
     <div class="container">
       <div class="typewriter">
-        <h2 class="text-center mb-4">Find Your Dream Home</h2>
+        <h2 class="text-center mb-4">Find Your Dream Apartment</h2>
       </div>
       <div class="row g-4 text-center">
         <div class="col-lg-3 col-md-6 col-sm-12">
@@ -934,7 +989,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="100">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Cozy+Studio&font=roboto" class="card-img-top" alt="Cozy Studio" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Cozy+Studio&font=roboto" class="card-img-top"
+                alt="Cozy Studio" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Cozy Studio in Victoria Island</h5>
@@ -949,7 +1005,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="200">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Spacious+2-Bed&font=roboto" class="card-img-top" alt="Spacious 2-Bed" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Spacious+2-Bed&font=roboto" class="card-img-top"
+                alt="Spacious 2-Bed" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Spacious 2-Bedroom in Lekki</h5>
@@ -964,7 +1021,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="300">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Luxury+Penthouse&font=roboto" class="card-img-top" alt="Luxury Penthouse" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Luxury+Penthouse&font=roboto"
+                class="card-img-top" alt="Luxury Penthouse" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury Penthouse in Maitama</h5>
@@ -979,7 +1037,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="400">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Modern+Apt&font=roboto" class="card-img-top" alt="Modern Apartment" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Modern+Apt&font=roboto" class="card-img-top"
+                alt="Modern Apartment" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern Apartment in Ikoyi</h5>
@@ -994,7 +1053,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="500">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Beachfront+Villa&font=roboto" class="card-img-top" alt="Beachfront Villa" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Beachfront+Villa&font=roboto"
+                class="card-img-top" alt="Beachfront Villa" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Beachfront Villa in Lekki</h5>
@@ -1009,7 +1069,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="600">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Luxury+Condo&font=roboto" class="card-img-top" alt="Luxury Condo" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Luxury+Condo&font=roboto" class="card-img-top"
+                alt="Luxury Condo" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury Condo in Banana Island</h5>
@@ -1033,7 +1094,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="100">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+1&font=roboto" class="card-img-top" alt="Lagos Apartment 1" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+1&font=roboto" class="card-img-top"
+                alt="Lagos Apartment 1" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern Apartment in Victoria Island</h5>
@@ -1048,7 +1110,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="200">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Lagos+Apt+2&font=roboto" class="card-img-top" alt="Lagos Apartment 2" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Lagos+Apt+2&font=roboto" class="card-img-top"
+                alt="Lagos Apartment 2" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury Apartment in Lekki Phase 1</h5>
@@ -1063,7 +1126,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="300">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+3&font=roboto" class="card-img-top" alt="Lagos Apartment 3" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+3&font=roboto" class="card-img-top"
+                alt="Lagos Apartment 3" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Cozy Studio in Ikoyi</h5>
@@ -1078,7 +1142,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="400">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Lagos+Apt+4&font=roboto" class="card-img-top" alt="Lagos Apartment 4" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Lagos+Apt+4&font=roboto" class="card-img-top"
+                alt="Lagos Apartment 4" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Spacious Apartment in Surulere</h5>
@@ -1093,7 +1158,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="500">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+5&font=roboto" class="card-img-top" alt="Lagos Apartment 5" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+5&font=roboto" class="card-img-top"
+                alt="Lagos Apartment 5" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Penthouse in Banana Island</h5>
@@ -1108,7 +1174,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="600">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/0013f?text=Lagos+Apt+6&font=roboto" class="card-img-top" alt="Lagos Apartment 6" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/0013f?text=Lagos+Apt+6&font=roboto" class="card-img-top"
+                alt="Lagos Apartment 6" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Beachfront Villa in Lekki</h5>
@@ -1132,7 +1199,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="100">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+1&font=roboto" class="card-img-top" alt="Abuja Apartment 1" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+1&font=roboto" class="card-img-top"
+                alt="Abuja Apartment 1" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern Studio in Maitama</h5>
@@ -1147,7 +1215,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="200">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+2&font=roboto" class="card-img-top" alt="Abuja Apartment 2" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+2&font=roboto" class="card-img-top"
+                alt="Abuja Apartment 2" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury 2-Bed in Gwarimpa</h5>
@@ -1162,7 +1231,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="300">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+3&font=roboto" class="card-img-top" alt="Abuja Apartment 3" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+3&font=roboto" class="card-img-top"
+                alt="Abuja Apartment 3" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Cozy Apartment in Wuse 2</h5>
@@ -1177,7 +1247,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="400">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+4&font=roboto" class="card-img-top" alt="Abuja Apartment 4" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+4&font=roboto" class="card-img-top"
+                alt="Abuja Apartment 4" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Spacious 3-Bed in Asokoro</h5>
@@ -1192,7 +1263,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="500">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+5&font=roboto" class="card-img-top" alt="Abuja Apartment 5" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+5&font=roboto" class="card-img-top"
+                alt="Abuja Apartment 5" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Penthouse in Jabi</h5>
@@ -1207,7 +1279,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="600">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+6&font=roboto" class="card-img-top" alt="Abuja Apartment 6" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+6&font=roboto" class="card-img-top"
+                alt="Abuja Apartment 6" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern Loft in Wuye</h5>
@@ -1231,7 +1304,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="100">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+1&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 1" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+1&font=roboto" class="card-img-top"
+                alt="Port Harcourt Apartment 1" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Cozy Studio in GRA</h5>
@@ -1246,7 +1320,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="200">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+2&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 2" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+2&font=roboto" class="card-img-top"
+                alt="Port Harcourt Apartment 2" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern 2-Bed in Trans Amadi</h5>
@@ -1261,7 +1336,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="300">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+3&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 3" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+3&font=roboto" class="card-img-top"
+                alt="Port Harcourt Apartment 3" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury Apartment in Old GRA</h5>
@@ -1276,7 +1352,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="400">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+4&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 4" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+4&font=roboto" class="card-img-top"
+                alt="Port Harcourt Apartment 4" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Spacious 3-Bed in Rumuola</h5>
@@ -1291,7 +1368,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="500">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+5&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 5" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+5&font=roboto" class="card-img-top"
+                alt="Port Harcourt Apartment 5" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Penthouse in Woji</h5>
@@ -1306,7 +1384,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="600">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+6&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 6" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+6&font=roboto" class="card-img-top"
+                alt="Port Harcourt Apartment 6" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Beachfront Condo in Eleme</h5>
@@ -1330,7 +1409,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="100">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+1&font=roboto" class="card-img-top" alt="Kano Apartment 1" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+1&font=roboto" class="card-img-top"
+                alt="Kano Apartment 1" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Cozy Studio in Nassarawa</h5>
@@ -1345,7 +1425,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="200">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+2&font=roboto" class="card-img-top" alt="Kano Apartment 2" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+2&font=roboto" class="card-img-top"
+                alt="Kano Apartment 2" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern 2-Bed in Kano City</h5>
@@ -1360,7 +1441,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="300">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+3&font=roboto" class="card-img-top" alt="Kano Apartment 3" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+3&font=roboto" class="card-img-top"
+                alt="Kano Apartment 3" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury Apartment in Bompai</h5>
@@ -1375,7 +1457,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="400">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+4&font=roboto" class="card-img-top" alt="Kano Apartment 4" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+4&font=roboto" class="card-img-top"
+                alt="Kano Apartment 4" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Spacious 3-Bed in Tarauni</h5>
@@ -1390,7 +1473,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="500">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+5&font=roboto" class="card-img-top" alt="Kano Apartment 5" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+5&font=roboto" class="card-img-top"
+                alt="Kano Apartment 5" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Penthouse in Fagge</h5>
@@ -1405,7 +1489,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="600">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+6&font=roboto" class="card-img-top" alt="Kano Apartment 6" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+6&font=roboto" class="card-img-top"
+                alt="Kano Apartment 6" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury Loft in Sharada</h5>
@@ -1429,7 +1514,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="100">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+1&font=roboto" class="card-img-top" alt="Ibadan Apartment 1" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+1&font=roboto" class="card-img-top"
+                alt="Ibadan Apartment 1" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Cozy Studio in Bodija</h5>
@@ -1444,7 +1530,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="200">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+2&font=roboto" class="card-img-top" alt="Ibadan Apartment 2" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+2&font=roboto" class="card-img-top"
+                alt="Ibadan Apartment 2" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern 2-Bed in Jericho</h5>
@@ -1459,7 +1546,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="300">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+3&font=roboto" class="card-img-top" alt="Ibadan Apartment 3" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+3&font=roboto" class="card-img-top"
+                alt="Ibadan Apartment 3" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury Apartment in Agodi</h5>
@@ -1474,7 +1562,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="400">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+4&font=roboto" class="card-img-top" alt="Ibadan Apartment 4" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+4&font=roboto" class="card-img-top"
+                alt="Ibadan Apartment 4" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Spacious 3-Bed in Oluyole</h5>
@@ -1489,7 +1578,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="500">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+5&font=roboto" class="card-img-top" alt="Ibadan Apartment 5" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+5&font=roboto" class="card-img-top"
+                alt="Ibadan Apartment 5" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Penthouse in Ring Road</h5>
@@ -1504,7 +1594,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="600">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+6&font=roboto" class="card-img-top" alt="Ibadan Apartment 6" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+6&font=roboto" class="card-img-top"
+                alt="Ibadan Apartment 6" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern Loft in Challenge</h5>
@@ -1528,7 +1619,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="100">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+1&font=roboto" class="card-img-top" alt="Ekiti Apartment 1" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+1&font=roboto" class="card-img-top"
+                alt="Ekiti Apartment 1" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Cozy Studio in Ado Ekiti</h5>
@@ -1543,7 +1635,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="200">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+2&font=roboto" class="card-img-top" alt="Ekiti Apartment 2" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+2&font=roboto" class="card-img-top"
+                alt="Ekiti Apartment 2" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern 2-Bed in Ikere</h5>
@@ -1558,7 +1651,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="300">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+3&font=roboto" class="card-img-top" alt="Ekiti Apartment 3" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+3&font=roboto" class="card-img-top"
+                alt="Ekiti Apartment 3" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Luxury Apartment in Iyin</h5>
@@ -1573,7 +1667,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="400">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+4&font=roboto" class="card-img-top" alt="Ekiti Apartment 4" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+4&font=roboto" class="card-img-top"
+                alt="Ekiti Apartment 4" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Spacious 3-Bed in Oye</h5>
@@ -1588,7 +1683,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="500">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+5&font=roboto" class="card-img-top" alt="Ekiti Apartment 5" loading="lazy">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+5&font=roboto" class="card-img-top"
+                alt="Ekiti Apartment 5" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Penthouse in Efon</h5>
@@ -1603,7 +1699,8 @@
         <div class="col-lg-2 col-md-6 col-sm-12">
           <div class="home-card" data-aos="fade-up" data-aos-delay="600">
             <div class="ratio ratio-4x3">
-              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+6&font=roboto" class="card-img-top" alt="Ekiti Apartment 6" loading="lazy">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+6&font=roboto" class="card-img-top"
+                alt="Ekiti Apartment 6" loading="lazy">
             </div>
             <div class="home-card-body">
               <h5 class="home-card-title">Modern Loft in Aramoko</h5>
@@ -1627,9 +1724,12 @@
         <div class="col-lg-10 offset-lg-1">
           <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Testimonial 1"></button>
-              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1" aria-label="Testimonial 2"></button>
-              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="2" aria-label="Testimonial 3"></button>
+              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Testimonial 1"></button>
+              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1"
+                aria-label="Testimonial 2"></button>
+              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="2"
+                aria-label="Testimonial 3"></button>
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -1637,7 +1737,8 @@
                   <div class="testimonial-content">
                     <p>"A seamless experience finding my dream home!"</p>
                     <div class="testimonial-author">
-                      <img src="https://placehold.co/50x50/d4af37/001f3f?text=Emily+R.&font=roboto" alt="Emily R." loading="lazy">
+                      <img src="https://placehold.co/50x50/d4af37/001f3f?text=Emily+R.&font=roboto" alt="Emily R."
+                        loading="lazy">
                       <div>
                         <h5>Emily R.</h5>
                         <p>Homeowner</p>
@@ -1651,7 +1752,8 @@
                   <div class="testimonial-content">
                     <p>"Professional service and stunning listings."</p>
                     <div class="testimonial-author">
-                      <img src="https://placehold.co/50x50/b8860b/001f3f?text=Mark+T.&font=roboto" alt="Mark T." loading="lazy">
+                      <img src="https://placehold.co/50x50/b8860b/001f3f?text=Mark+T.&font=roboto" alt="Mark T."
+                        loading="lazy">
                       <div>
                         <h5>Mark T.</h5>
                         <p>Renter</p>
@@ -1665,7 +1767,8 @@
                   <div class="testimonial-content">
                     <p>"Highly recommend their services!"</p>
                     <div class="testimonial-author">
-                      <img src="https://placehold.co/50x50/d4af37/001f3f?text=Sarah+L.&font=roboto" alt="Sarah L." loading="lazy">
+                      <img src="https://placehold.co/50x50/d4af37/001f3f?text=Sarah+L.&font=roboto" alt="Sarah L."
+                        loading="lazy">
                       <div>
                         <h5>Sarah L.</h5>
                         <p>Homeowner</p>
@@ -1696,20 +1799,24 @@
       <div class="row g-4">
         <div class="col-lg-4 col-md-6 footer-column">
           <h5 class="footer-title">About HomeFinder</h5>
-          <p class="footer-text">We specialize in connecting you with elegant homes and land tailored to your lifestyle.</p>
+          <p class="footer-text">We specialize in connecting you with elegant homes and land tailored to your lifestyle.
+          </p>
           <div class="social-links">
-            <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook"><i
+                class="fab fa-facebook-f"></i></a>
             <a href="#" class="social-icon twitter" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon instagram" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon whatsapp" aria-label="Follow us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-icon instagram" aria-label="Follow us on Instagram"><i
+                class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon whatsapp" aria-label="Follow us on WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
             <a href="#" class="social-icon tiktok" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
         <div class="col-lg-4 col-md-6 footer-column">
           <h5 class="footer-title">Quick Links</h5>
           <ul class="footer-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Listings</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listing.html">Listings</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
@@ -1727,64 +1834,64 @@
   <div class="rights-reserved">
     <p class="mb-0">© 2025 HomeFinder. All Rights Reserved.</p>
   </div>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- AOS JS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  // Initialize AOS only if it’s loaded
-  if (typeof AOS !== 'undefined') {
-    AOS.init({
-      duration: 600,
-      once: true,
-    });
-  }
-</script>
-<!-- Custom JavaScript for Search Bar Toggling -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const searchButton = document.getElementById('search-button');
-    const searchClose = document.getElementById('search-close');
-    const offcanvas = document.getElementById('navbarOffcanvas');
-    const searchCard = document.querySelector('.search-card');
-    const navbarToggler = document.querySelector('.navbar-toggler');
-
-    if (searchButton && searchClose && offcanvas && searchCard && navbarToggler) {
-      searchButton.addEventListener('click', function() {
-        const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas) || new bootstrap.Offcanvas(offcanvas);
-        offcanvasInstance.hide();
-
-        // Explicitly remove the backdrop
-        const backdrop = document.querySelector('.modal-backdrop');
-        if (backdrop) {
-          backdrop.remove();
-        }
-
-        // Remove body classes that Bootstrap adds
-        document.body.classList.remove('modal-open');
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
-
-        // Reset navbar toggler state
-        navbarToggler.classList.remove('active');
-        navbarToggler.setAttribute('aria-expanded', 'false');
-
-        // Show search card and focus on the first input
-        searchCard.classList.remove('d-none');
-        const firstInput = searchCard.querySelector('input');
-        if (firstInput) {
-          firstInput.focus();
-        }
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS only if it’s loaded
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 600,
+        once: true,
       });
-
-      searchClose.addEventListener('click', function() {
-        searchCard.classList.add('d-none');
-      });
-    } else {
-      console.error('One or more elements not found:', { searchButton, searchClose, offcanvas, searchCard, navbarToggler });
     }
-  });
-</script>
+  </script>
+  <!-- Custom JavaScript for Search Bar Toggling -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchButton = document.getElementById('search-button');
+      const searchClose = document.getElementById('search-close');
+      const offcanvas = document.getElementById('navbarOffcanvas');
+      const searchCard = document.querySelector('.search-card');
+      const navbarToggler = document.querySelector('.navbar-toggler');
+
+      if (searchButton && searchClose && offcanvas && searchCard && navbarToggler) {
+        searchButton.addEventListener('click', function () {
+          const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas) || new bootstrap.Offcanvas(offcanvas);
+          offcanvasInstance.hide();
+
+          // Explicitly remove the backdrop
+          const backdrop = document.querySelector('.modal-backdrop');
+          if (backdrop) {
+            backdrop.remove();
+          }
+
+          // Remove body classes that Bootstrap adds
+          document.body.classList.remove('modal-open');
+          document.body.style.overflow = '';
+          document.body.style.paddingRight = '';
+
+          // Reset navbar toggler state
+          navbarToggler.classList.remove('active');
+          navbarToggler.setAttribute('aria-expanded', 'false');
+
+          // Show search card and focus on the first input
+          searchCard.classList.remove('d-none');
+          const firstInput = searchCard.querySelector('input');
+          if (firstInput) {
+            firstInput.focus();
+          }
+        });
+
+        searchClose.addEventListener('click', function () {
+          searchCard.classList.add('d-none');
+        });
+      } else {
+        console.error('One or more elements not found:', { searchButton, searchClose, offcanvas, searchCard, navbarToggler });
+      }
+    });
+  </script>
 </body>
 
 </html>

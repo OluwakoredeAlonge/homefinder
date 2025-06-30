@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Message trusted agents and homeowners on HomeFinder. Connect seamlessly for your real estate needs in Nigeria.">
+  <meta name="keywords" content="messaging, real estate, HomeFinder, Nigeria, chat">
+  <title>HomeFinder - Messaging</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Google Fonts: Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #1a1a1a;
+      background-color: #f9fafb;
+      line-height: 1.6;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: #003087;
+    }
+
+    /* Header (Navbar) */
+    .header {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.5rem 0;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+    }
+
+    .navbar-brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #d4af37;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 32px;
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .navbar-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      color: #1a1a1a;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 20px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: #f7f7f7;
+      color: #d4af37;
+      transform: translateY(-2px);
+    }
+
+    .nav-link i {
+      font-size: 1rem;
+    }
+
+    .profile-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #1a1a1a;
+      cursor: pointer;
+      transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.2s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .profile-icon:hover {
+      color: #d4af37;
+      background-color: #e2e8f0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem;
+      font-size: 1.25rem;
+      transition: transform 0.2s ease;
+      display: none;
+    }
+
+    .navbar-toggler:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 48, 135, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* Off-canvas specific styles */
+    .offcanvas {
+      height: 100vh !important;
+    }
+
+    .offcanvas .navbar-nav {
+      display: block;
+    }
+
+    .offcanvas .nav-link {
+      color: #1a1a1a;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .offcanvas .nav-link:hover,
+    .offcanvas .nav-link.active {
+      background: #f7f7f7;
+      color: #d4af37;
+    }
+
+    /* Messaging Container */
+    .messaging-container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      height: calc(100vh - 120px);
+      gap: 1rem;
+    }
+
+    /* Conversation Sidebar */
+    .conversation-sidebar {
+      flex: 0 0 350px;
+      background: linear-gradient(180deg, #ffffff, #f9fafb);
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .conversation-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 1.5rem;
+    }
+
+    .conversation-header h3 {
+      font-size: 1.5rem;
+      margin: 0;
+      color: #003087;
+    }
+
+    .conversation-search {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .conversation-search input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: none;
+      border-radius: 20px;
+      background: #f1f5f9;
+      font-size: 0.9rem;
+      color: #1a1a1a;
+      transition: background 0.2s ease;
+    }
+
+    .conversation-search input:focus {
+      outline: none;
+      background: #e2e8f0;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .conversation-search i {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7280;
+      font-size: 1rem;
+    }
+
+    .conversation-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .conversation-item {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem;
+      border-radius: 12px;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+    }
+
+    .conversation-item:hover,
+    .conversation-item.active {
+      background: #f7f7f7;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .conversation-item img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 1rem;
+      border: 2px solid #d4af37;
+      object-fit: cover;
+    }
+
+    .conversation-details {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .conversation-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .conversation-preview {
+      font-size: 0.85rem;
+      color: #6b7280;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .conversation-time {
+      font-size: 0.8rem;
+      color: #6b7280;
+      white-space: nowrap;
+    }
+
+    .unread-badge {
+      background: #d4af37;
+      color: #001f3f;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    /* Chat Area */
+    .chat-area {
+      flex: 1;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .chat-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, #ffffff, #f9fafb);
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+    }
+
+    .chat-header-details {
+      display: flex;
+      align-items: center;
+    }
+
+    .chat-header img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      margin-right: 1rem;
+      border: 2px solid #d4af37;
+      object-fit: cover;
+    }
+
+    .chat-header h4 {
+      font-size: 1.25rem;
+      margin: 0;
+      color: #003087;
+    }
+
+    .chat-header .status {
+      font-size: 0.85rem;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chat-header .status::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2ecc71;
+    }
+
+    .chat-back-btn {
+      display: none;
+      font-size: 1rem;
+      color: #d4af37;
+      transition: color 0.3s ease;
+    }
+
+    .chat-back-btn:hover {
+      color: #b8860b;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #f9fafb;
+    }
+
+    .message {
+      max-width: 70%;
+      padding: 0.75rem 1rem;
+      border-radius: 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      position: relative;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.sent {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #001f3f;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message.received {
+      background: #e2e8f0;
+      color: #1a1a1a;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .message-time {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+      text-align: right;
+    }
+
+    .message.received .message-time {
+      text-align: left;
+    }
+
+    .chat-input {
+      padding: 1rem 1.5rem;
+      border-top: 2px solid #e2e8f0;
+      background: #fff;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .chat-input form {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .chat-input .form-control {
+      border: none;
+      background: #f1f5f9;
+      border-radius: 24px;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      resize: none;
+      height: 48px;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .chat-input .form-control:focus {
+      background: #e2e8f0;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .chat-input .btn-primary {
+      background: #d4af37;
+      border: none;
+      border-radius: 24px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      color: #001f3f;
+      font-size: 0.9rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .chat-input .btn-primary:hover {
+      background: #b8860b;
+      transform: scale(1.05);
+    }
+
+    .chat-input .btn-primary i {
+      font-size: 1rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (min-width: 768px) {
+      .navbar-nav {
+        display: flex !important;
+        flex-direction: row !important;
+      }
+
+      .navbar-toggler {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .messaging-container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .conversation-sidebar {
+        flex: 0 0 auto;
+        max-height: none;
+        transform: translateX(-100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1001;
+        border-radius: 0;
+      }
+
+      .conversation-sidebar.active {
+        transform: translateX(0);
+      }
+
+      .chat-area {
+        flex: 1;
+        display: block;
+      }
+
+      .chat-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .navbar-nav {
+        display: none;
+      }
+
+      .navbar-toggler {
+        display: block !important;
+      }
+
+      .conversation-search input {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem 0.5rem 2rem;
+      }
+
+      .conversation-search i {
+        font-size: 0.9rem;
+      }
+
+      .conversation-item img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .conversation-name {
+        font-size: 0.9rem;
+      }
+
+      .conversation-preview,
+      .conversation-time {
+        font-size: 0.75rem;
+      }
+
+      .chat-header img {
+        width: 36px;
+        height: 36px;
+      }
+
+      .chat-header h4 {
+        font-size: 1.1rem;
+      }
+
+      .chat-header .status {
+        font-size: 0.8rem;
+      }
+
+      .message {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .message-time {
+        font-size: 0.7rem;
+      }
+
+      .chat-input .form-control {
+        font-size: 0.85rem;
+        height: 40px;
+        padding: 0.5rem 0.75rem;
+      }
+
+      .chat-input .btn-primary {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header-container {
+        padding: 0.25rem 0.5rem;
+      }
+
+      .navbar-logo {
+        height: 28px;
+      }
+
+      .navbar-brand {
+        font-size: 1rem;
+      }
+
+      .conversation-header h3 {
+        font-size: 1.25rem;
+      }
+
+      .conversation-item img {
+        width: 36px;
+        height: 36px;
+      }
+
+      .conversation-name {
+        font-size: 0.85rem;
+      }
+
+      .conversation-preview,
+      .conversation-time {
+        font-size: 0.7rem;
+      }
+
+      .unread-badge {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+      }
+
+      .chat-header img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .chat-header h4 {
+        font-size: 1rem;
+      }
+
+      .chat-input .form-control {
+        font-size: 0.8rem;
+        height: 36px;
+        padding: 0.4rem 0.75rem;
+      }
+
+      .chat-input .btn-primary {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (Navbar) -->
+  <header class="header" data-aos="fade-down">
+    <div class="header-container">
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/logo.png" alt="HomeFinder Logo" class="navbar-logo">
+          HomeFinder
+        </a>
+          <ul class="navbar-nav d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html" aria-current="page" title="Browse apartments for lease"><i
+                class="fas fa-building"></i> Apartments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="home.html" title="Browse homes for sale"><i class="fas fa-home"></i> Homes for
+              Sale</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="land.html" title="Browse lands for sale"><i class="fas fa-map"></i> Lands for
+              Sale</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inbox.html" aria-label="Messages" title="View your messages"><i
+                class="fas fa-envelope profile-icon"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-icon" href="#" aria-label="User Profile" title="Your profile"><i
+                class="fas fa-user"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" title="List your property">Become a Host</a>
+          </li>
+        </ul>
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Off-canvas for Navbar on Small Screens -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+           <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html" aria-current="page" title="Browse apartments for lease"><i
+                    class="fas fa-building"></i> Apartments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="home.html" title="Browse homes for sale"><i class="fas fa-home"></i> Homes for
+                  Sale</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="land.html" title="Browse lands for sale"><i class="fas fa-map"></i> Lands for
+                  Sale</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="inbox.html" title="View your messages"><i class="fas fa-envelope"></i>
+                  Messages</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" title="List your property"><i class="fas fa-plus-circle"></i> Become a
+                  Host</a>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="search-button" title="Search properties"><i class="fas fa-search"></i>
+                  Search</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Messaging Section -->
+  <section class="messaging-container" data-aos="fade-up">
+    <!-- Conversation Sidebar -->
+    <div class="conversation-sidebar" id="conversationSidebar" data-aos="fade-right" data-aos-delay="100">
+      <div class="conversation-header">
+        <h3>Messages</h3>
+        <a href="#" class="text-decoration-none" style="color: #d4af37; font-weight: 500;"><i class="fas fa-plus me-1"></i> New</a>
+      </div>
+      <div class="conversation-search">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Search conversations..." aria-label="Search conversations">
+      </div>
+      <ul class="conversation-list">
+        <li class="conversation-item active" data-conversation-id="1">
+          <img src="https://placehold.co/50x50/d4af37/001f3f?text=Agent+1&font=roboto" alt="Agent John">
+          <div class="conversation-details">
+            <h5 class="conversation-name">Agent John</h5>
+            <p class="conversation-preview">Hi, I have questions about the Lekki property...</p>
+          </div>
+          <div class="conversation-time">10:30 AM</div>
+          <span class="unread-badge">3</span>
+        </li>
+        <li class="conversation-item" data-conversation-id="2">
+          <img src="https://placehold.co/50x50/b8860b/001f3f?text=Agent+2&font=roboto" alt="Sarah Realtor">
+          <div class="conversation-details">
+            <h5 class="conversation-name">Sarah Realtor</h5>
+            <p class="conversation-preview">The penthouse in Maitama is available...</p>
+          </div>
+          <div class="conversation-time">Yesterday</div>
+        </li>
+        <li class="conversation-item" data-conversation-id="3">
+          <img src="https://placehold.co/50x50/d4af37/001f3f?text=Agent+3&font=roboto" alt="Mike Properties">
+          <div class="conversation-details">
+            <h5 class="conversation-name">Mike Properties</h5>
+            <p class="conversation-preview">Can we schedule a viewing for the villa?</p>
+          </div>
+          <div class="conversation-time">2 days ago</div>
+          <span class="unread-badge">1</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area" id="chatArea" data-aos="fade-left" data-aos-delay="200">
+      <div class="chat-header">
+        <a href="#" class="chat-back-btn" id="backToConversations"><i class="fas fa-arrow-left"></i> Messages</a>
+        <div class="chat-header-details">
+          <img src="https://placehold.co/40x40/d4af37/001f3f?text=Agent+1&font=roboto" alt="Agent John">
+          <div>
+            <h4>Agent John</h4>
+            <p class="status">Online</p>
+          </div>
+        </div>
+        <a href="#" class="text-decoration-none" style="color: #d4af37;"><i class="fas fa-ellipsis-v"></i></a>
+      </div>
+      <div class="chat-messages">
+        <div class="message received">
+          <p>Hello! Thanks for reaching out about the Lekki property. What details would you like to know?</p>
+          <div class="message-time">10:15 AM</div>
+        </div>
+        <div class="message sent">
+          <p>Hi! Can you confirm if the property has a pool and if pets are allowed?</p>
+          <div class="message-time">10:20 AM</div>
+        </div>
+        <div class="message received">
+          <p>The property does have a pool, and it’s pet-friendly with some restrictions. Would you like to schedule a viewing?</p>
+          <div class="message-time">10:25 AM</div>
+        </div>
+        <div class="message sent">
+          <p>Yes, please! Can we do this weekend?</p>
+          <div class="message-time">10:30 AM</div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <form>
+          <div class="input-group">
+            <textarea class="form-control" placeholder="Type your message..." aria-label="Type your message"></textarea>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 600,
+        once: true,
+      });
+    }
+
+    // JavaScript for conversation selection and mobile toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const conversationSidebar = document.getElementById('conversationSidebar');
+      const chatArea = document.getElementById('chatArea');
+      const backToConversations = document.getElementById('backToConversations');
+      const conversationItems = document.querySelectorAll('.conversation-item');
+
+      // Handle conversation selection
+      conversationItems.forEach(item => {
+        item.addEventListener('click', function() {
+          conversationItems.forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+          if (window.innerWidth <= 767) {
+            conversationSidebar.classList.remove('active');
+            chatArea.style.display = 'block';
+          }
+          // Update chat header and messages dynamically here if backend is integrated
+        });
+      });
+
+      // Handle back button on mobile
+      if (backToConversations) {
+        backToConversations.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (window.innerWidth <= 767) {
+            conversationSidebar.classList.add('active');
+            chatArea.style.display = 'none';
+          }
+        });
+      }
+
+      // Initial state for mobile
+      function handleMobileLayout() {
+        if (window.innerWidth <= 767) {
+          conversationSidebar.classList.remove('active');
+          chatArea.style.display = 'block';
+        } else {
+          conversationSidebar.classList.add('active');
+          chatArea.style.display = 'block';
+        }
+      }
+
+      handleMobileLayout();
+      window.addEventListener('resize', handleMobileLayout);
+    });
+  </script>
+</body>
+</html>
