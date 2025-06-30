@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detailed listing for luxury apartments and homes with HomeFinder in Nigeria.">
+  <meta name="keywords" content="Homes, apartments, rentals, luxury homes, real estate, Nigeria">
+  <meta name="robots" content="index, follow">
+  <title>HomeFinder - Property Listing</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Google Fonts: Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <!-- Google Maps API -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #222222;
+      background-color: #f9fafb;
+      line-height: 1.6;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: #003087;
+    }
+
+    /* Header (Navbar + Search) */
+    .header {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.5rem 0;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+    }
+
+    .navbar-brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #d4af37;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 32px;
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .navbar-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      color: #222222;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 20px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: #f7f7f7;
+      color: #d4af37;
+      transform: translateY(-2px);
+    }
+
+    .nav-link i {
+      font-size: 1rem;
+    }
+
+    .profile-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #222222;
+      cursor: pointer;
+      transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.2s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .profile-icon:hover {
+      color: #d4af37;
+      background-color: #e2e8f0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem;
+      font-size: 1.25rem;
+      transition: transform 0.2s ease;
+      display: none;
+    }
+
+    .navbar-toggler:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 48, 135, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .offcanvas .navbar-nav {
+      display: block;
+    }
+
+    .offcanvas {
+      height: 100vh !important;
+    }
+
+    .offcanvas .nav-link {
+      color: #222222;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .offcanvas .nav-link:hover {
+      background: #f7f7f7;
+      color: #d4af37;
+    }
+
+    .search-card {
+      background: #fff;
+      padding: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 32px;
+      max-width: 90%;
+      width: 100%;
+      margin: 0.5rem auto;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      flex-wrap: wrap;
+    }
+
+    .search-form .input-group {
+      flex: 1 1 200px;
+      border-right: 1px solid #e2e8f0;
+      background: transparent;
+    }
+
+    .search-form .input-group:last-child {
+      border-right: none;
+    }
+
+    .search-form .form-control,
+    .search-form .form-select {
+      border: none;
+      background: transparent;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+      color: #222222;
+      height: 40px;
+      transition: background 0.2s ease;
+    }
+
+    .search-form .form-control:hover,
+    .search-form .form-select:hover {
+      background: #f9fafb;
+    }
+
+    .search-form .form-control::placeholder {
+      color: #6b7280;
+    }
+
+    .search-form .input-group-text {
+      background: transparent;
+      border: none;
+      color: #d4af37;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .search-form .btn-primary {
+      background: #d4af37;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1.25rem;
+      font-weight: 600;
+      color: #001f3f;
+      height: 40px;
+      margin: 0.2rem;
+      font-size: 0.9rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-form .btn-primary:hover {
+      background: #b8860b;
+      transform: scale(1.05);
+    }
+
+    .search-card .btn-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1001;
+      background-color: #fff;
+      opacity: 1;
+      padding: 0.5rem;
+    }
+
+    /* Listing Page Styles */
+    .listing-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .listing-location, .listing-rating, .listing-specs {
+      font-size: 1rem;
+      color: #4a5568;
+      margin-bottom: 0.5rem;
+    }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .amenity-item {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .amenity-item i {
+      color: #d4af37;
+      margin-right: 0.5rem;
+    }
+
+    .map-container {
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .review-card {
+      border-bottom: 1px solid #e2e8f0;
+      padding: 1rem 0;
+    }
+
+    .review-card:last-child {
+      border-bottom: none;
+    }
+
+    /* Booking Panel */
+    .booking-panel {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      max-width: 350px;
+    }
+
+    .booking-panel.sticky {
+      position: sticky;
+      top: 100px;
+    }
+
+    .calendar-placeholder {
+      height: 200px;
+      background: #f9fafb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* Image Grid Styles (Large Screens) */
+    .image-grid {
+      display: grid;
+      grid-template-areas:
+        "main sub1 sub2"
+        "main sub3 sub4";
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 8px;
+      height: 500px;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .image-grid .image-main,
+    .image-grid .image-sub1,
+    .image-grid .image-sub2,
+    .image-grid .image-sub3,
+    .image-grid .image-sub4 {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-main { grid-area: main; }
+    .image-sub1 { grid-area: sub1; }
+    .image-sub2 { grid-area: sub2; }
+    .image-sub3 { grid-area: sub3; }
+    .image-sub4 { grid-area: sub4; }
+
+    .show-more-btn {
+      background: #d4af37;
+      color: #001f3f;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .show-more-btn:hover {
+      background: #b8860b;
+      transform: scale(1.05);
+    }
+
+    /* Carousel Styles (Small Screens) */
+    .image-carousel {
+      display: none;
+      margin-bottom: 1rem;
+    }
+
+    .image-carousel .carousel-inner img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .image-carousel .carousel-indicators {
+      bottom: -40px;
+    }
+
+    .image-carousel .carousel-indicators button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #6b7280;
+      border: none;
+      margin: 0 4px;
+    }
+
+    .image-carousel .carousel-indicators .active {
+      background-color: #d4af37;
+    }
+
+    /* Host Section Styles */
+    .host-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 600px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .host-card img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid #e2e8f0;
+    }
+
+    .host-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .host-stat {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #4a5568;
+    }
+
+    .host-stat i {
+      color: #d4af37;
+      margin-right: 0.5rem;
+    }
+
+    .superhost-badge {
+      background: #FF385C;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+    }
+
+    .host-bio {
+      font-size: 0.9rem;
+      color: #222222;
+      margin-top: 1rem;
+      max-height: 4.8rem;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .host-bio.expanded {
+      max-height: none;
+    }
+
+    .show-more-link {
+      color: #d4af37;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-decoration: underline;
+    }
+
+    .show-more-link:hover {
+      color: #b8860b;
+    }
+
+    .message-host .btn-primary {
+      background: transparent;
+      border: 1px solid #222222;
+      color: #222222;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      transition: background 0.3s ease, color 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .message-host .btn-primary:hover {
+      background: #222222;
+      color: #fff;
+    }
+
+    /* Similar Properties Styles */
+    .home-card {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #fff;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .home-card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .home-card .ratio {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .home-card .ratio>img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .home-card-body {
+      padding: 0.75rem;
+    }
+
+    .home-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #222222;
+      margin-bottom: 0.25rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .home-card-text {
+      font-size: 0.85rem;
+      color: #4a5568;
+      margin-bottom: 0.25rem;
+    }
+
+    .home-card-price {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #222222;
+      margin-bottom: 0.25rem;
+    }
+
+    .home-card-rating {
+      font-size: 0.85rem;
+      color: #4a5568;
+      display: flex;
+      align-items: center;
+    }
+
+    .home-card-rating i {
+      color: #d4af37;
+      font-size: 0.9rem;
+      margin-right: 0.25rem;
+    }
+
+    /* Things to Know Section */
+    .things-to-know {
+      margin-top: 2rem;
+    }
+
+    .things-to-know h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .things-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .things-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .things-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .things-item li {
+      font-size: 0.9rem;
+      color: #222222;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .things-item li i {
+      color: #d4af37;
+      margin-right: 0.5rem;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(90deg, #001f3f, #003366);
+      color: #fff;
+      padding: 4rem 0 2rem;
+      position: relative;
+    }
+
+    .footer-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #d4af37, #b8860b);
+      transition: width 0.3s ease;
+    }
+
+    .footer-column:hover .footer-title {
+      color: #d4af37;
+    }
+
+    .footer-column:hover .footer-title::after {
+      width: 80px;
+    }
+
+    .footer-text {
+      font-size: 1rem;
+      color: #e2e8f0;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-text:hover {
+      color: #d4af37;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      color: #003087;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-links .social-icon:hover {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #fff;
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .rights-reserved {
+      background: linear-gradient(90deg, #001f3f, #003366);
+      color: #f9f6ee;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (min-width: 992px) {
+      .main-content {
+        flex: 1;
+        max-width: 66.66%;
+      }
+
+      .booking-panel {
+        position: sticky;
+        top: 100px;
+        max-width: 350px;
+      }
+
+      .navbar-nav {
+        display: flex !important;
+        flex-direction: row !important;
+      }
+
+      .navbar-toggler {
+        display: none !important;
+      }
+
+      .search-form {
+        flex-direction: row;
+      }
+
+      .search-form .input-group {
+        border-right: 1px solid #e2e8f0;
+      }
+
+      .search-form .input-group:last-child {
+        border-right: none;
+      }
+
+      .image-grid {
+        display: grid;
+      }
+
+      .image-carousel {
+        display: none;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .booking-panel {
+        max-width: none;
+        margin-top: 2rem;
+      }
+
+      .navbar-nav {
+        display: none;
+      }
+
+      .navbar-toggler {
+        display: block !important;
+      }
+
+      .search-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+        padding: 0.5rem;
+      }
+
+      .search-form .input-group {
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        margin-bottom: 0.25rem;
+        flex: 1 1 100%;
+      }
+
+      .search-form .btn-primary {
+        width: 100%;
+        margin: 0.25rem 0;
+      }
+
+      .image-grid {
+        display: none;
+      }
+
+      .image-carousel {
+        display: block;
+      }
+
+      .listing-title {
+        font-size: 1.5rem;
+      }
+
+      .listing-location, .listing-rating, .listing-specs {
+        font-size: 0.9rem;
+      }
+
+      .amenities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .host-card {
+        padding: 1rem;
+        max-width: none;
+      }
+
+      .home-card-title {
+        font-size: 0.9rem;
+      }
+
+      .home-card-text, .home-card-price, .home-card-rating {
+        font-size: 0.8rem;
+      }
+
+      .things-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header-container {
+        padding: 0.25rem 0.5rem;
+      }
+
+      .navbar-logo {
+        height: 28px;
+      }
+
+      .navbar-brand {
+        font-size: 1rem;
+      }
+
+      .search-card {
+        padding: 0.2rem;
+        margin: 0.5rem auto;
+      }
+
+      .listing-title {
+        font-size: 1.25rem;
+      }
+
+      .host-card img {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" data-aos="fade-down">
+    <div class="header-container">
+      <nav class="navbar">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/logo.png" alt="HomeFinder Logo" class="navbar-logo" loading="lazy">
+          HomeFinder
+        </a>
+        <ul class="navbar-nav d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link active" href="home.html" aria-current="page"><i class="fas fa-home"></i> Homes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="land.html"><i class="fas fa-map"></i> Lands</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-icon" href="#" aria-label="User Profile"><i class="fas fa-user"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Become a host</a>
+          </li>
+        </ul>
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="home.html" aria-current="page"><i class="fas fa-home"></i> Homes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="land.html"><i class="fas fa-map"></i> Lands</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Become a host</a>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" id="search-button"><i class="fas fa-search"></i> Search</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="search-card d-md-block d-none" data-aos="fade-up" data-aos-delay="200">
+        <button class="btn-close d-md-none" id="search-close" aria-label="Close Search"></button>
+        <div class="search-form" id="search-form" aria-label="Search Properties">
+          <div class="input-group">
+            <span class="input-group-text" id="location-addon"><i class="fas fa-map-marker-alt"></i></span>
+            <input type="text" class="form-control" placeholder="Location" aria-label="Location" list="locations" aria-describedby="location-addon">
+            <datalist id="locations">
+              <option value="Lagos">
+              <option value="Abuja">
+              <option value="Rivers">
+              <option value="Kano">
+              <option value="Oyo">
+              <option value="Ekiti">
+            </datalist>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="min-price-addon"><i class="fas fa-money-bill-wave"></i></span>
+            <input type="number" class="form-control" placeholder="Min Price" aria-label="Minimum Price" aria-describedby="min-price-addon">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="max-price-addon"><i class="fas fa-money-bill-wave"></i></span>
+            <input type="number" class="form-control" placeholder="Max Price" aria-label="Maximum Price" aria-describedby="max-price-addon">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="amenities-addon"><i class="fas fa-concierge-bell"></i></span>
+            <select class="form-select" aria-label="Amenities" aria-describedby="amenities-addon">
+              <option selected>Amenities</option>
+              <option value="pool">Pool</option>
+              <option value="gym">Gym</option>
+              <option value="pet">Pet-Friendly</option>
+              <option value="smart">Smart Home</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary" aria-label="Search Properties"><i class="fas fa-search"></i> Search</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Listing Page Content -->
+  <section class="listing-page py-5" data-aos="fade-up">
+    <div class="container">
+      <!-- Image Section -->
+      <section class="property-images mb-4" data-aos="fade-up">
+        <div class="image-grid" id="imageGrid">
+          <div class="image-main">
+            <img src="https://placehold.co/400x300/d4af37/001f3f?text=Living+Room&font=roboto" alt="Living Room" loading="lazy">
+          </div>
+          <div class="image-sub1">
+            <img src="https://placehold.co/400x300/b8860b/001f3f?text=Bedroom&font=roboto" alt="Bedroom" loading="lazy">
+          </div>
+          <div class="image-sub2">
+            <img src="https://placehold.co/400x300/d4af37/001f3f?text=Kitchen&font=roboto" alt="Kitchen" loading="lazy">
+          </div>
+          <div class="image-sub3">
+            <img src="https://placehold.co/400x300/b8860b/001f3f?text=Bathroom&font=roboto" alt="Bathroom" loading="lazy">
+          </div>
+          <div class="image-sub4">
+            <img src="https://placehold.co/400x300/d4af37/001f3f?text=View&font=roboto" alt="View" loading="lazy">
+          </div>
+        </div>
+        <div class="image-carousel carousel slide" id="imageCarousel" data-bs-ride="carousel">
+          <div class="carousel-inner" id="carouselInner"></div>
+          <div class="carousel-indicators" id="carouselIndicators"></div>
+        </div>
+        <div class="text-center mt-5">
+          <a href="#" class="show-more-btn" id="showMorePhotos" aria-label="View all photos"><i class="fas fa-images"></i> Show More</a>
+        </div>
+      </section>
+
+      <!-- Main Content and Booking Sidebar -->
+      <div class="row">
+        <div class="main-content col-lg-8 col-md-12">
+          <!-- Listing Info -->
+          <div class="listing-info">
+            <h1 class="listing-title" id="listingTitle"></h1>
+            <p class="listing-location" id="listingLocation"></p>
+            <p class="listing-specs" id="listingSpecs"></p>
+            <div class="listing-rating" id="listingRating"></div>
+          </div>
+
+          <!-- Description -->
+          <section class="description mt-5">
+            <h2>About this home</h2>
+            <p id="listingDescription"></p>
+          </section>
+
+          <!-- Amenities -->
+          <section class="amenities mt-5">
+            <h2>Amenities</h2>
+            <div class="amenities-grid" id="amenitiesList"></div>
+          </section>
+
+          <!-- Meet Your Host -->
+          <section class="host-info mt-5" data-aos="fade-up">
+            <h2>Meet Your Host</h2>
+            <div class="host-card">
+              <div class="d-flex align-items-center gap-3">
+                <img id="hostImage" src="" alt="Host" loading="lazy">
+                <div>
+                  <h5 id="hostName" class="mb-0"></h5>
+                  <span id="hostStatus" class="superhost-badge d-none">Superhost</span>
+                  <p id="hostJoined" class="text-muted mb-0"></p>
+                </div>
+              </div>
+              <div class="host-stats">
+                <div class="host-stat"><i class="fas fa-star"></i> <span id="hostReviews"></span></div>
+                <div class="host-stat"><i class="fas fa-check-circle"></i> Identity verified</div>
+                <div class="host-stat"><i class="fas fa-comment"></i> <span id="hostResponseRate"></span></div>
+                <div class="host-stat"><i class="fas fa-clock"></i> <span id="hostResponseTime"></span></div>
+              </div>
+              <p id="hostBio" class="host-bio"></p>
+              <a href="#" class="show-more-link" id="showMoreBio">Show more</a>
+              <div class="message-host">
+                <button class="btn btn-primary" id="contactHost"><i class="fas fa-paper-plane"></i> Contact Host</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Location -->
+          <section class="location mt-5">
+            <h2>Location</h2>
+            <p id="neighborhoodInfo"></p>
+            <div class="map-container" id="map"></div>
+            <a href="#" id="viewOnGoogleMaps" class="show-more-btn mt-2" target="_blank" aria-label="View on Google Maps"><i class="fas fa-map"></i> View on Google Maps</a>
+          </section>
+
+          <!-- Reviews -->
+          <section class="reviews mt-5">
+            <h2>Reviews</h2>
+            <div id="reviewsList"></div>
+          </section>
+
+          <!-- Things to Know -->
+          <section class="things-to-know mt-5" data-aos="fade-up">
+            <h2>Things to Know</h2>
+            <div class="things-grid">
+              <div class="things-item">
+                <h3>House Rules</h3>
+                <ul id="houseRules"></ul>
+                <a href="#" class="show-more-link" id="showMoreRules">Show more</a>
+              </div>
+              <div class="things-item">
+                <h3>Safety & Property</h3>
+                <ul id="safetyInfo"></ul>
+                <a href="#" class="show-more-link" id="showMoreSafety">Show more</a>
+              </div>
+              <div class="things-item">
+                <h3>Cancellation Policy</h3>
+                <ul id="cancellationPolicy"></ul>
+                <a href="#" class="show-more-link" id="showMorePolicy">Show more</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- Similar Properties by Host -->
+          <section class="similar-properties mt-5" data-aos="fade-up">
+            <h2>More Properties by This Host</h2>
+            <div class="row g-4" id="similarProperties">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="home-card" data-aos="fade-up" data-aos-delay="100">
+                  <div class="ratio ratio-4x3">
+                    <img src="https://placehold.co/400x300/d4af37/001f3f?text=Apt+1&font=roboto" class="card-img-top" alt="Modern Apartment in Ikoyi" loading="lazy">
+                  </div>
+                  <div class="home-card-body">
+                    <h5 class="home-card-title">Modern Apartment in Ikoyi</h5>
+                    <p class="home-card-text">Lagos, Nigeria</p>
+                    <p class="home-card-price">$1200/month</p>
+                    <div class="home-card-rating"><i class="fas fa-star"></i> 4.7 (95 reviews)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="home-card" data-aos="fade-up" data-aos-delay="200">
+                  <div class="ratio ratio-4x3">
+                    <img src="https://placehold.co/400x300/b8860b/001f3f?text=Apt+2&font=roboto" class="card-img-top" alt="Luxury Condo in Banana Island" loading="lazy">
+                  </div>
+                  <div class="home-card-body">
+                    <h5 class="home-card-title">Luxury Condo in Banana Island</h5>
+                    <p class="home-card-text">Lagos, Nigeria</p>
+                    <p class="home-card-price">$2000/month</p>
+                    <div class="home-card-rating"><i class="fas fa-star"></i> 4.9 (55 reviews)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="home-card" data-aos="fade-up" data-aos-delay="300">
+                  <div class="ratio ratio-4x3">
+                    <img src="https://placehold.co/400x300/d4af37/001f3f?text=Apt+3&font=roboto" class="card-img-top" alt="Spacious Loft in Lekki" loading="lazy">
+                  </div>
+                  <div class="home-card-body">
+                    <h5 class="home-card-title">Spacious Loft in Lekki</h5>
+                    <p class="home-card-text">Lagos, Nigeria</p>
+                    <p class="home-card-price">$1500/month</p>
+                    <div class="home-card-rating"><i class="fas fa-star"></i> 4.6 (80 reviews)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Booking Panel -->
+        <div class="col-lg-4 col-md-12">
+          <section class="booking-panel sticky">
+            <h3 id="pricePerMonth"></h3>
+            <div class="calendar-placeholder">Interactive Calendar Placeholder</div>
+            <p class="mt-3"><strong>Total Cost:</strong> <span id="totalCost"></span></p>
+            <button class="btn btn-primary w-100 mt-3" id="bookNow"><i class="fas fa-book"></i> Book Now</button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" data-aos="fade-up">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6 footer-column">
+          <h5 class="footer-title">About HomeFinder</h5>
+          <p class="footer-text">We specialize in connecting you with elegant homes and land tailored to your lifestyle.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon twitter" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon instagram" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon whatsapp" aria-label="Follow us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-icon tiktok" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 footer-column">
+          <h5 class="footer-title">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Listings</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 footer-column">
+          <h5 class="footer-title">Contact Us</h5>
+          <p class="footer-text"><i class="fas fa-phone me-1"></i> (123) 456-7890</p>
+          <p class="footer-text"><i class="fas fa-envelope me-1"></i> info@Homefinder.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="rights-reserved">
+    <p class="mb-0">© 2025 HomeFinder. All Rights Reserved.</p>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 600,
+      once: true,
+    });
+
+    // Function to get URL parameter
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      const results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Sample data with fallbacks
+    async function fetchListingData(listingId) {
+      const defaultData = {
+        id: listingId,
+        title: "Cozy Studio in Victoria Island",
+        location: "Lagos, Nigeria",
+        specs: "1 Bedroom • 1 Bathroom • 600 sq ft",
+        rating: "4.8 (120 reviews)",
+        host: {
+          name: "John Doe",
+          image: "https://placehold.co/64x64/d4af37/001f3f?text=Host&font=roboto",
+          joined: "March 2018",
+          reviews: "120 Reviews",
+          responseRate: "100% response rate",
+          responseTime: "Responds within an hour",
+          bio: "Hi, I'm John! I'm passionate about sharing the beauty of Lagos with travelers. I've been hosting for over 5 years and love helping guests create memorable experiences. In my free time, I enjoy exploring local markets and trying new restaurants.",
+          isSuperhost: true
+        },
+        description: "This cozy studio is perfect for singles or couples looking for a comfortable stay in Victoria Island. It features a queen-sized bed, a modern kitchen, and a spacious bathroom. Located in the heart of Lagos, you're close to top restaurants and entertainment.",
+        amenities: [
+          { name: "Wi-Fi", icon: "wifi" },
+          { name: "Kitchen", icon: "utensils" },
+          { name: "Parking", icon: "parking" },
+          { name: "Air Conditioning", icon: "snowflake" }
+        ],
+        neighborhood: "Victoria Island is a vibrant area with easy access to beaches, shopping, and nightlife.",
+        coordinates: { lat: 6.4291, lng: 3.4219 },
+        reviews: [
+          { name: "Emily R.", rating: "4.8", comment: "Amazing stay, very clean and cozy!", date: "June 2025" },
+          { name: "Michael S.", rating: "4.9", comment: "Great location and friendly host.", date: "May 2025" }
+        ],
+        pricePerMonth: "$900/month",
+        totalCost: "$900",
+        images: [
+          { url: "https://placehold.co/400x300/d4af37/001f3f?text=Living+Room&font=roboto", alt: "Living Room" },
+          { url: "https://placehold.co/400x300/b8860b/001f3f?text=Bedroom&font=roboto", alt: "Bedroom" },
+          { url: "https://placehold.co/400x300/d4af37/001f3f?text=Kitchen&font=roboto", alt: "Kitchen" },
+          { url: "https://placehold.co/400x300/b8860b/001f3f?text=Bathroom&font=roboto", alt: "Bathroom" },
+          { url: "https://placehold.co/400x300/d4af37/001f3f?text=View&font=roboto", alt: "View" }
+        ]
+      };
+      return defaultData;
+    }
+
+    // Initialize Google Map
+    function initMap() {
+      const mapContainer = document.getElementById('map');
+      if (!mapContainer) return;
+      const coordinates = window.listingCoordinates || { lat: 6.4291, lng: 3.4219 };
+      const map = new google.maps.Map(mapContainer, {
+        zoom: 14,
+        center: coordinates
+      });
+      new google.maps.Marker({
+        position: coordinates,
+        map: map,
+        title: 'Property Location'
+      });
+      const viewOnGoogleMaps = document.getElementById('viewOnGoogleMaps');
+      if (viewOnGoogleMaps) {
+        viewOnGoogleMaps.href = `https://www.google.com/maps/search/?api=1&query=${coordinates.lat},${coordinates.lng}`;
+      }
+    }
+
+    // Populate page with data
+    async function populateListingPage() {
+      const listingId = getUrlParameter('id');
+      if (!listingId) {
+        const listingPage = document.querySelector('.listing-page');
+        if (listingPage) {
+          listingPage.innerHTML = '<p>Listing not found.</p>';
+        }
+        return;
+      }
+
+      const data = await fetchListingData(listingId);
+
+      window.listingCoordinates = data.coordinates || { lat: 6.4291, lng: 3.4219 };
+
+      const setTextContent = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value || '';
+      };
+
+      const setInnerHTML = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.innerHTML = value || '';
+      };
+
+      const setAttribute = (id, attr, value) => {
+        const element = document.getElementById(id);
+        if (element) element.setAttribute(attr, value || '');
+      };
+
+      setTextContent('listingTitle', data.title);
+      setTextContent('listingLocation', data.location);
+      setTextContent('listingSpecs', data.specs);
+      setInnerHTML('listingRating', data.rating ? `<i class="fas fa-star"></i> ${data.rating}` : '');
+
+      setAttribute('hostImage', 'src', data.host?.image);
+      setTextContent('hostName', data.host?.name);
+      setTextContent('hostJoined', data.host?.joined ? `Joined in ${data.host.joined}` : '');
+      setTextContent('hostReviews', data.host?.reviews);
+      setTextContent('hostResponseRate', data.host?.responseRate);
+      setTextContent('hostResponseTime', data.host?.responseTime);
+      setTextContent('hostBio', data.host?.bio);
+      if (data.host?.isSuperhost) {
+        const hostStatus = document.getElementById('hostStatus');
+        if (hostStatus) hostStatus.classList.remove('d-none');
+      }
+
+      setTextContent('listingDescription', data.description);
+
+      const amenitiesList = document.getElementById('amenitiesList');
+      if (amenitiesList && data.amenities) {
+        data.amenities.forEach(amenity => {
+          const div = document.createElement('div');
+          div.className = 'amenity-item';
+          div.innerHTML = `<i class="fas fa-${amenity.icon}"></i> ${amenity.name}`;
+          amenitiesList.appendChild(div);
+        });
+      }
+
+      setTextContent('neighborhoodInfo', data.neighborhood);
+
+      const reviewsList = document.getElementById('reviewsList');
+      if (reviewsList && data.reviews) {
+        data.reviews.forEach(review => {
+          const div = document.createElement('div');
+          div.className = 'review-card';
+          div.innerHTML = `
+            <h5>${review.name}</h5>
+            <p><i class="fas fa-star"></i> ${review.rating} - ${review.date}</p>
+            <p>${review.comment}</p>
+          `;
+          reviewsList.appendChild(div);
+        });
+      }
+
+      setTextContent('pricePerMonth', data.pricePerMonth);
+      setTextContent('totalCost', data.totalCost);
+
+      // Populate image carousel (small screens)
+      const carouselInner = document.getElementById('carouselInner');
+      const carouselIndicators = document.getElementById('carouselIndicators');
+      if (carouselInner && carouselIndicators && data.images) {
+        const images = data.images.slice(0, 5);
+        images.forEach((img, index) => {
+          const div = document.createElement('div');
+          div.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+          div.innerHTML = `<img src="${img.url}" class="d-block w-100" alt="${img.alt}" loading="lazy">`;
+          carouselInner.appendChild(div);
+
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.setAttribute('data-bs-target', '#imageCarousel');
+          button.setAttribute('data-bs-slide-to', index);
+          if (index === 0) button.className = 'active';
+          button.setAttribute('aria-label', `Slide ${index + 1}`);
+          carouselIndicators.appendChild(button);
+        });
+      }
+
+      const showMorePhotos = document.getElementById('showMorePhotos');
+      if (showMorePhotos) {
+        showMorePhotos.href = `/property/${listingId}/photos`;
+      }
+
+      const houseRules = document.getElementById('houseRules');
+      if (houseRules && data.thingsToKnow?.houseRules) {
+        data.thingsToKnow.houseRules.forEach(rule => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="fas fa-check"></i> ${rule}`;
+          houseRules.appendChild(li);
+        });
+      }
+
+      const safetyInfo = document.getElementById('safetyInfo');
+      if (safetyInfo && data.thingsToKnow?.safetyInfo) {
+        data.thingsToKnow.safetyInfo.forEach(info => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="fas fa-shield-alt"></i> ${info}`;
+          safetyInfo.appendChild(li);
+        });
+      }
+
+      const cancellationPolicy = document.getElementById('cancellationPolicy');
+      if (cancellationPolicy && data.thingsToKnow?.cancellationPolicy) {
+        data.thingsToKnow.cancellationPolicy.forEach(policy => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="fas fa-info-circle"></i> ${policy}`;
+          cancellationPolicy.appendChild(li);
+        });
+      }
+
+      const showMoreBio = document.getElementById('showMoreBio');
+      const hostBio = document.getElementById('hostBio');
+      if (showMoreBio && hostBio && hostBio.scrollHeight > hostBio.clientHeight) {
+        showMoreBio.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (hostBio.classList.contains('expanded')) {
+            hostBio.classList.remove('expanded');
+            showMoreBio.textContent = 'Show more';
+          } else {
+            hostBio.classList.add('expanded');
+            showMoreBio.textContent = 'Show less';
+          }
+        });
+      } else if (showMoreBio) {
+        showMoreBio.style.display = 'none';
+      }
+
+      const contactHost = document.getElementById('contactHost');
+      if (contactHost) {
+        contactHost.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Contact host feature initiated.');
+        });
+      }
+
+      const showMoreRules = document.getElementById('showMoreRules');
+      if (showMoreRules) {
+        showMoreRules.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Show more house rules.');
+        });
+      }
+
+      const showMoreSafety = document.getElementById('showMoreSafety');
+      if (showMoreSafety) {
+        showMoreSafety.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Show more safety information.');
+        });
+      }
+
+      const showMorePolicy = document.getElementById('showMorePolicy');
+      if (showMorePolicy) {
+        showMorePolicy.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Show more cancellation policy.');
+        });
+      }
+
+      const bookNow = document.getElementById('bookNow');
+      if (bookNow) {
+        bookNow.addEventListener('click', () => {
+          alert('Booking initiated.');
+        });
+      }
+    }
+
+    // Search bar toggling
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchButton = document.getElementById('search-button');
+      const searchClose = document.getElementById('search-close');
+      const offcanvas = document.getElementById('navbarOffcanvas');
+      const searchCard = document.querySelector('.search-card');
+      const navbarToggler = document.querySelector('.navbar-toggler');
+
+      if (searchButton && searchClose && offcanvas && searchCard && navbarToggler) {
+        searchButton.addEventListener('click', () => {
+          const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas) || new bootstrap.Offcanvas(offcanvas);
+          offcanvasInstance.hide();
+          document.body.classList.remove('modal-open');
+          document.body.style.overflow = '';
+          document.body.style.paddingRight = '';
+          navbarToggler.classList.remove('active');
+          navbarToggler.setAttribute('aria-expanded', 'false');
+          searchCard.classList.remove('d-none');
+          const firstInput = searchCard.querySelector('input');
+          if (firstInput) firstInput.focus();
+        });
+
+        searchClose.addEventListener('click', () => {
+          searchCard.classList.add('d-none');
+        });
+      }
+
+      populateListingPage();
+    });
+  </script>
+</body>
+</html>

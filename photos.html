@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Photo tour of luxury apartments and homes with HomeFinder in Nigeria.">
+  <meta name="keywords" content="Homes, apartments, rentals, luxury homes, real estate, Nigeria, photo tour">
+  <meta name="robots" content="index, follow">
+  <title>HomeFinder - Property Photo Tour</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Google Fonts: Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+      background-color: #000;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .photo-tour-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .photo-item {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-item img {
+      width: 100%;
+      max-width: 1120px;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .photo-caption {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-top: 0.5rem;
+      text-align: left;
+    }
+
+    .close-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(0, 0, 0, 0.9);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 767px) {
+      .photo-tour-container {
+        padding: 2rem 1rem;
+      }
+
+      .photo-item {
+        margin-bottom: 1rem;
+      }
+
+      .photo-item img {
+        border-radius: 4px;
+      }
+
+      .photo-caption {
+        font-size: 0.875rem;
+      }
+
+      .close-btn {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 28px;
+        height: 28px;
+        font-size: 0.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="photo-tour-container" id="photoTour">
+    <button class="close-btn" id="closeBtn" aria-label="Close Photo Tour">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Function to get URL parameter
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      const results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Sample data with fallbacks
+    async function fetchListingData(listingId) {
+      const defaultData = {
+        id: listingId,
+        images: [
+          { url: "https://placehold.co/400x300/d4af37/001f3f?text=Living+Room&font=roboto", alt: "Living Room" },
+          { url: "https://placehold.co/400x300/b8860b/001f3f?text=Bedroom&font=roboto", alt: "Bedroom" },
+          { url: "https://placehold.co/400x300/d4af37/001f3f?text=Kitchen&font=roboto", alt: "Kitchen" },
+          { url: "https://placehold.co/400x300/b8860b/001f3f?text=Bathroom&font=roboto", alt: "Bathroom" },
+          { url: "https://placehold.co/400x300/d4af37/001f3f?text=View&font=roboto", alt: "View" }
+        ]
+      };
+      return defaultData;
+    }
+
+    // Populate photo tour
+    async function populatePhotoTour() {
+      const listingId = getUrlParameter('id');
+      const photoId = parseInt(getUrlParameter('photo_id')) || 0;
+      if (!listingId) {
+        const photoTour = document.getElementById('photoTour');
+        if (photoTour) {
+          photoTour.innerHTML = '<p style="color: #fff; text-align: center;">No photos available.</p>';
+        }
+        return;
+      }
+
+      const data = await fetchListingData(listingId);
+      const photoTour = document.getElementById('photoTour');
+      if (!photoTour || !data.images) return;
+
+      // Populate photos
+      data.images.forEach((img, index) => {
+        const div = document.createElement('div');
+        div.className = 'photo-item';
+        div.id = `photo-${index}`;
+        div.innerHTML = `
+          <img src="${img.url}" alt="${img.alt}" loading="lazy">
+          <div class="photo-caption">${img.alt}</div>
+        `;
+        photoTour.appendChild(div);
+      });
+
+      // Scroll to specified photo_id
+      if (photoId >= 0 && photoId < data.images.length) {
+        const targetPhoto = document.getElementById(`photo-${photoId}`);
+        if (targetPhoto) {
+          targetPhoto.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      // Set up close button
+      const closeBtn = document.getElementById('closeBtn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          window.location.href = `listing.html?id=${listingId}`;
+        });
+      }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      populatePhotoTour();
+    });
+  </script>
+</body>
+</html>
