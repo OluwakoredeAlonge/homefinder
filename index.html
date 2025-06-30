@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find luxury Homes, villas, penthouses, and land with HomeFinder. Connect with trusted agents in Nigeria.">
+  <meta name="keywords" content="Homes, villas, penthouses, land, rentals, luxury homes, real estate, Nigeria">
+  <title>HomeFinder - Luxury Living</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Google Fonts: Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #1a1a1a;
+      background-color: #f9fafb;
+      line-height: 1.6;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      color: #003087;
+    }
+
+    /* Header (Navbar + Search) */
+    .header {
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.5rem 0;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+    }
+
+    .navbar-brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #d4af37;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 32px;
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .navbar-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-link {
+      color: #1a1a1a;
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 20px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: #f7f7f7;
+      color: #d4af37;
+      transform: translateY(-2px);
+    }
+
+    .nav-link i {
+      font-size: 1rem;
+    }
+
+    .profile-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #1a1a1a;
+      cursor: pointer;
+      transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.2s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .profile-icon:hover {
+      color: #d4af37;
+      background-color: #e2e8f0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem;
+      font-size: 1.25rem;
+      transition: transform 0.2s ease;
+      display: none;
+    }
+
+    .navbar-toggler:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 48, 135, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* Off-canvas specific styles */
+    .offcanvas .navbar-nav {
+      display: block;
+    }
+.offcanvas {
+  height: 100vh !important;
+}
+    .offcanvas .nav-link {
+      color: #1a1a1a;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .offcanvas .nav-link:hover {
+      background: #f7f7f7;
+      color: #d4af37;
+    }
+
+    .search-card {
+      background: #fff;
+      padding: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 32px;
+      max-width: 90%;
+      width: 100%;
+      margin: 0.5rem auto;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      flex-wrap: wrap;
+    }
+
+    .search-form .input-group {
+      flex: 1 1 200px;
+      border-right: 1px solid #e2e8f0;
+      background: transparent;
+    }
+
+    .search-form .input-group:last-child {
+      border-right: none;
+    }
+
+    .search-form .form-control,
+    .search-form .form-select {
+      border: none;
+      background: transparent;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+      color: #1a1a1a;
+      height: 40px;
+      transition: background 0.2s ease;
+    }
+
+    .search-form .form-control:hover,
+    .search-form .form-select:hover {
+      background: #f9fafb;
+    }
+
+    .search-form .form-control::placeholder {
+      color: #6b7280;
+    }
+
+    .search-form .input-group-text {
+      background: transparent;
+      border: none;
+      color: #d4af37;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .search-form .btn-primary {
+      background: #d4af37;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1.25rem;
+      font-weight: 600;
+      color: #001f3f;
+      height: 40px;
+      margin: 0.2rem;
+      font-size: 0.9rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-form .btn-primary:hover {
+      background: #b8860b;
+      transform: scale(1.05);
+    }
+
+    /* Rest of your existing styles remain unchanged */
+    /* Typewriter Animation */
+    .typewriter h2 {
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: 0.05em;
+      animation: typing 3.5s steps(40, end) forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Airbnb-Style Card */
+    .airbnb-card {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #fff;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .airbnb-card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .airbnb-card .ratio {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .airbnb-card .ratio>img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .airbnb-card-body {
+      padding: 0.75rem;
+    }
+
+    .airbnb-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .airbnb-card-text {
+      font-size: 0.85rem;
+      color: #4a5568;
+      margin-bottom: 0.25rem;
+    }
+
+    .airbnb-card-price {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+    }
+
+    .airbnb-card-rating {
+      font-size: 0.85rem;
+      color: #4a5568;
+      display: flex;
+      align-items: center;
+    }
+
+    .airbnb-card-rating i {
+      color: #d4af37;
+      font-size: 0.9rem;
+      margin-right: 0.25rem;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #003087;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .section-title:hover {
+      color: #d4af37;
+    }
+
+    .section-title::after {
+      content: '>';
+      margin-left: 0.5rem;
+      font-size: 1.2rem;
+      color: #d4af37;
+    }
+
+    /* Wide Container for Apartments */
+    .wide-container {
+      max-width: 1600px;
+      padding: 0 1rem;
+      margin: 0 auto;
+    }
+
+    /* Custom Grid for 6 Columns */
+    .col-lg-2 {
+      flex: 0 0 auto;
+      width: 16.666%;
+    }
+
+    /* Counts Section */
+    .counts-card {
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .counts-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .counts-card i {
+      color: #d4af37;
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .counts-card h3 {
+      font-size: 1.8rem;
+      color: #003087;
+      font-weight: 700;
+    }
+
+    .counts-card p {
+      font-size: 1rem;
+      color: #4a5568;
+      font-weight: 500;
+    }
+
+    .counts-card.Homes {
+      background-color: #f9f6ee;
+    }
+
+    .counts-card.villas {
+      background-color: #f5f5f5;
+    }
+
+    .counts-card.penthouses {
+      background-color: #f9f6ee;
+    }
+
+    .counts-card.land {
+      background-color: #f5f5f5;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      background: #f1f5f9;
+      padding: 4rem 0;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      transition: transform 0.2s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .testimonial-content p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #4a5568;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .testimonial-author img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #d4af37;
+    }
+
+    .testimonial-author h5 {
+      font-size: 1rem;
+      color: #003087;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .testimonial-author p {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    .carousel-indicators {
+      bottom: -40px;
+      margin-bottom: 0;
+    }
+
+    .carousel-indicators [data-bs-target] {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #d4af37;
+      opacity: 0.5;
+      margin: 0 5px;
+    }
+
+    .carousel-indicators .active {
+      opacity: 1;
+      background-color: #003087;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: #f9f6ee;
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      color: #003087;
+      font-weight: 700;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: #4a5568;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #001f3f, #003366);
+      color: #fff;
+      padding: 4rem 0 2rem;
+      position: relative;
+    }
+
+    .footer-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .footer-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: ローンpx;
+      height: 3px;
+      background: linear-gradient(90deg, #d4af37, #b8860b);
+      transition: width 0.3s ease;
+    }
+
+    .footer-column:hover .footer-title {
+      color: #d4af37;
+    }
+
+    .footer-column:hover .footer-title::after {
+      width: 80px;
+    }
+
+    .footer-text {
+      font-size: 1rem;
+      color: #e2e8f0;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-text:hover {
+      color: #d4af37;
+    }
+
+    footer a:hover {
+      color: #d4af37;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      color: #003087;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-links .social-icon:hover {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #fff;
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icon.facebook:hover { color: #1877F2; }
+    .social-icon.twitter:hover { color: #1DA1F2; }
+    .social-icon.instagram:hover { color: #E4405F; }
+    .social-icon.whatsapp:hover { color: #25D366; }
+    .social-icon.tiktok:hover { color: #010101; }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: #e2e8f0;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #d4af37;
+      transform: translateX(8px);
+    }
+
+    .rights-reserved {
+      background: linear-gradient(90deg, #001f3f, #003366);
+      color: #f9f6ee;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (min-width: 768px) {
+      .navbar-nav {
+        display: flex !important;
+        flex-direction: row !important;
+      }
+
+      .navbar-toggler {
+        display: none !important;
+      }
+
+      .search-form {
+        flex-direction: row;
+      }
+
+      .search-form .input-group {
+        border-right: 1px solid #e2e8f0;
+      }
+
+      .search-form .input-group:last-child {
+        border-right: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .navbar-nav {
+        display: none;
+      }
+
+      .navbar-toggler {
+        display: block !important;
+      }
+
+      .search-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25rem;
+        padding: 0.5rem;
+      }
+
+      .search-form .input-group {
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        margin-bottom: 0.25rem;
+        flex: 1 1 100%;
+      }
+
+      .search-form .input-group:last-child {
+        border-bottom: none;
+      }
+
+      .search-form .btn-primary {
+        width: 100%;
+        margin: 0.25rem 0;
+      }
+
+      .search-form .form-control,
+      .search-form .form-select {
+        font-size: 0.85rem;
+        height: 36px;
+      }
+
+      .search-form .btn-primary {
+        font-size: 0.85rem;
+        height: 36px;
+      }
+
+      .search-form .input-group-text {
+        font-size: 0.85rem;
+      }
+
+      .col-lg-2 {
+        width: 50%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .header-container {
+        padding: 0.25rem 0.5rem;
+      }
+
+      .navbar-logo {
+        height: 28px;
+      }
+
+      .navbar-brand {
+        font-size: 1rem;
+      }
+
+      .search-card {
+        padding: 0.2rem;
+        margin: 0.5rem auto;
+      }
+
+      .search-form .form-control,
+      .search-form .form-select {
+        font-size: 0.85rem;
+        height: 34px;
+      }
+
+      .search-form .btn-primary {
+        font-size: 0.8rem;
+        height: 34px;
+      }
+
+      .search-form .input-group-text {
+        font-size: 0.85rem;
+      }
+
+      .col-lg-2 {
+        width: 100%;
+      }
+
+      .airbnb-card-title {
+        font-size: 0.9rem;
+      }
+
+      .airbnb-card-text,
+      .airbnb-card-price,
+      .airbnb-card-rating {
+        font-size: 0.8rem;
+      }
+
+      .airbnb-card-body {
+        padding: 0.5rem;
+      }
+
+      .footer-column {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .footer-title {
+        font-size: 1.2rem;
+      }
+
+      .footer-text,
+      .footer-links a {
+        font-size: 0.9rem;
+      }
+
+      .social-links .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .testimonial-author img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .testimonial-card {
+        padding: 1rem;
+      }
+
+      .footer-title::after {
+        content: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header (Navbar + Search) -->
+  <header class="header" data-aos="fade-down">
+    <div class="header-container">
+      <nav class="navbar">
+        <a class="navbar-brand" href="#">
+          <img src="assets/logo.png" alt="HomeFinder Logo" class="navbar-logo">
+          HomeFinder
+        </a>
+        <ul class="navbar-nav d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link active" href="#" aria-current="page"><i class="fas fa-home"></i> Homes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-map"></i> Lands</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link profile-icon" href="#" aria-label="User Profile"><i class="fas fa-user"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Become a host</a>
+          </li>
+        </ul>
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Off-canvas for Navbar on Small Screens -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="#" aria-current="page"><i class="fas fa-home"></i> Homes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-map"></i> Lands</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Become a host</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="search-card" data-aos="fade-up" data-aos-delay="200">
+        <form class="search-form" id="search-form" aria-label="Search Properties">
+          <div class="input-group">
+            <span class="input-group-text" id="location-addon"><i class="fas fa-map-marker-alt"></i></span>
+            <input type="text" class="form-control" placeholder="Location" aria-label="Location" list="locations" aria-describedby="location-addon">
+            <datalist id="locations">
+              <option value="Lagos">
+              <option value="Abuja">
+              <option value="Rivers">
+              <option value="Kano">
+              <option value="Oyo">
+              <option value="Ekiti">
+            </datalist>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="min-price-addon"><i class="fas fa-money-bill-wave"></i></span>
+            <input type="number" class="form-control" placeholder="Min Price" aria-label="Minimum Price" aria-describedby="min-price-addon">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="max-price-addon"><i class="fas fa-money-bill-wave"></i></span>
+            <input type="number" class="form-control" placeholder="Max Price" aria-label="Maximum Price" aria-describedby="max-price-addon">
+          </div>
+          <div class="input-group">
+            <span class="input-group-text" id="amenities-addon"><i class="fas fa-concierge-bell"></i></span>
+            <select class="form-select" aria-label="Amenities" aria-describedby="amenities-addon">
+              <option selected>Amenities</option>
+              <option value="pool">Pool</option>
+              <option value="gym">Gym</option>
+              <option value="pet">Pet-Friendly</option>
+              <option value="smart">Smart Home</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" aria-label="Search Properties">Search</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <!-- Available Properties Section -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="container">
+      <div class="typewriter">
+        <h2 class="text-center mb-4">Find Your Dream Home</h2>
+      </div>
+      <div class="row g-4 text-center">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card counts-card Homes" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-body">
+              <i class="fas fa-building fa-3x mb-3"></i>
+              <h3>1200+</h3>
+              <p>Homes</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card counts-card villas" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-body">
+              <i class="fas fa-home fa-3x mb-3"></i>
+              <h3>300+</h3>
+              <p>Villas</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card counts-card penthouses" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-body">
+              <i class="fas fa-city fa-3x mb-3"></i>
+              <h3>150+</h3>
+              <p>Penthouses</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+          <div class="card counts-card land" data-aos="fade-up" data-aos-delay="400">
+            <div class="card-body">
+              <i class="fas fa-map fa-3x mb-3"></i>
+              <h3>200+</h3>
+              <p>Land</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Properties Section -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="wide-container">
+      <h2 class="text-center mb-4">Featured Properties</h2>
+      <div class="row g-4">
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Cozy+Studio&font=roboto" class="card-img-top" alt="Cozy Studio" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Cozy Studio in Victoria Island</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$900/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (120 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Spacious+2-Bed&font=roboto" class="card-img-top" alt="Spacious 2-Bed" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Spacious 2-Bedroom in Lekki</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$1,600/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.9 (85 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Luxury+Penthouse&font=roboto" class="card-img-top" alt="Luxury Penthouse" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury Penthouse in Maitama</h5>
+              <p class="airbnb-card-text">Abuja, Nigeria</p>
+              <p class="airbnb-card-price">$3,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.95 (60 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Modern+Apt&font=roboto" class="card-img-top" alt="Modern Apartment" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern Apartment in Ikoyi</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$2,200/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (95 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Beachfront+Villa&font=roboto" class="card-img-top" alt="Beachfront Villa" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Beachfront Villa in Lekki</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$4,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 5.0 (45 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Luxury+Condo&font=roboto" class="card-img-top" alt="Luxury Condo" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury Condo in Banana Island</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$3,500/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.9 (55 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stay in Lagos -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="wide-container">
+      <a href="/lagos" class="section-title">Stay in Lagos</a>
+      <div class="row g-4">
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+1&font=roboto" class="card-img-top" alt="Lagos Apartment 1" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern Apartment in Victoria Island</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$1,200/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (120 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Lagos+Apt+2&font=roboto" class="card-img-top" alt="Lagos Apartment 2" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury Apartment in Lekki Phase 1</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$2,500/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.9 (85 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+3&font=roboto" class="card-img-top" alt="Lagos Apartment 3" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Cozy Studio in Ikoyi</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$950/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (95 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Lagos+Apt+4&font=roboto" class="card-img-top" alt="Lagos Apartment 4" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Spacious Apartment in Surulere</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$1,800/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.6 (110 breaks)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Lagos+Apt+5&font=roboto" class="card-img-top" alt="Lagos Apartment 5" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Penthouse in Banana Island</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$900/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 5.0 (50 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/0013f?text=Lagos+Apt+6&font=roboto" class="card-img-top" alt="Lagos Apartment 6" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Beachfront Villa in Lekki</h5>
+              <p class="airbnb-card-text">Lagos, Nigeria</p>
+              <p class="airbnb-card-price">$4,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.9 (60 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Available Next Month in Abuja -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="wide-container">
+      <a href="/abuja" class="section-title">Available Next Month in Abuja</a>
+      <div class="row g-4">
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+1&font=roboto" class="card-img-top" alt="Abuja Apartment 1" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern Studio in Maitama</h5>
+              <p class="airbnb-card-text">Abuja, Nigeria</p>
+              <p class="airbnb-card-price">$1,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (90 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+2&font=roboto" class="card-img-top" alt="Abuja Apartment 2" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury 2-Bed in Gwarimpa</h5>
+              <p class="airbnb-card-text">Abuja, Nigeria</p>
+              <p class="airbnb-card-price">$2,200/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.9 (75 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+3&font=roboto" class="card-img-top" alt="Abuja Apartment 3" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Cozy Apartment in Wuse 2</h5>
+              <p class="airbnb-card-text">Abuja, Nigeria</p>
+              <p class="airbnb-card-price">$1,100/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (80 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+4&font=roboto" class="card-img-top" alt="Abuja Apartment 4" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Spacious 3-Bed in Asokoro</h5>
+              <p class="airbnb-card-text">Abuja, Nigeria</p>
+              <p class="airbnb-card-price">$2,800/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.95 (60 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Abuja+Apt+5&font=roboto" class="card-img-top" alt="Abuja Apartment 5" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Penthouse in Jabi</h5>
+              <p class="airbnb-card-text">Abuja, Nigeria</p>
+              <p class="airbnb-card-price">$3,200/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 5.0 (40 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Abuja+Apt+6&font=roboto" class="card-img-top" alt="Abuja Apartment 6" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern Loft in Wuye</h5>
+              <p class="airbnb-card-text">Abuja, Nigeria</p>
+              <p class="airbnb-card-price">$1,500/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (70 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homes in Port Harcourt -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="wide-container">
+      <a href="/rivers" class="section-title">Homes in Port Harcourt</a>
+      <div class="row g-4">
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+1&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 1" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Cozy Studio in GRA</h5>
+              <p class="airbnb-card-text">Rivers, Nigeria</p>
+              <p class="airbnb-card-price">$850/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.6 (100 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+2&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 2" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern 2-Bed in Trans Amadi</h5>
+              <p class="airbnb-card-text">Rivers, Nigeria</p>
+              <p class="airbnb-card-price">$1,500/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (70 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+3&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 3" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury Apartment in Old GRA</h5>
+              <p class="airbnb-card-text">Rivers, Nigeria</p>
+              <p class="airbnb-card-price">$2,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.9 (65 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+4&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 4" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Spacious 3-Bed in Rumuola</h5>
+              <p class="airbnb-card-text">R firmaRivers, Nigeria</p>
+              <p class="airbnb-card-price">$2,300/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (80 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=PH+Apt+5&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 5" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Penthouse in Woji</h5>
+              <p class="airbnb-card-text">Rivers, Nigeria</p>
+              <p class="airbnb-card-price">$3,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 5.0 (50 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=PH+Apt+6&font=roboto" class="card-img-top" alt="Port Harcourt Apartment 6" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Beachfront Condo in Eleme</h5>
+              <p class="airbnb-card-text">Rivers, Nigeria</p>
+              <p class="airbnb-card-price">$2,500/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (60 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties in Kano -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="wide-container">
+      <a href="/kano" class="section-title">Properties in Kano</a>
+      <div class="row g-4">
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+1&font=roboto" class="card-img-top" alt="Kano Apartment 1" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Cozy Studio in Nassarawa</h5>
+              <p class="airbnb-card-text">Kano, Nigeria</p>
+              <p class="airbnb-card-price">$700/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.5 (90 breaks)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+2&font=roboto" class="card-img-top" alt="Kano Apartment 2" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern 2-Bed in Kano City</h5>
+              <p class="airbnb-card-text">Kano, Nigeria</p>
+              <p class="airbnb-card-price">$1,200/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (70 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+3&font=roboto" class="card-img-top" alt="Kano Apartment 3" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury Apartment in Bompai</h5>
+              <p class="airbnb-card-text">Kano, Nigeria</p>
+              <p class="airbnb-card-price">$1,800/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (60 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+4&font=roboto" class="card-img-top" alt="Kano Apartment 4" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Spacious 3-Bed in Tarauni</h5>
+              <p class="airbnb-card-text">Kano, Nigeria</p>
+              <p class="airbnb-card-price">$2,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.6 (75 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Kano+Apt+5&font=roboto" class="card-img-top" alt="Kano Apartment 5" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Penthouse in Fagge</h5>
+              <p class="airbnb-card-text">Kano, Nigeria</p>
+              <p class="airbnb-card-price">$2,500/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.9 (50 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Kano+Apt+6&font=roboto" class="card-img-top" alt="Kano Apartment 6" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury Loft in Sharada</h5>
+              <p class="airbnb-card-text">Kano, Nigeria</p>
+              <p class="airbnb-card-price">$1,400/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (65 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homes in Ibadan -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="wide-container">
+      <a href="/oyo" class="section-title">Homes in Ibadan</a>
+      <div class="row g-4">
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+1&font=roboto" class="card-img-top" alt="Ibadan Apartment 1" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Cozy Studio in Bodija</h5>
+              <p class="airbnb-card-text">Oyo, Nigeria</p>
+              <p class="airbnb-card-price">$600/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.5 (80 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+2&font=roboto" class="card-img-top" alt="Ibadan Apartment 2" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern 2-Bed in Jericho</h5>
+              <p class="airbnb-card-text">Oyo, Nigeria</p>
+              <p class="airbnb-card-price">$1,100/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (65 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+3&font=roboto" class="card-img-top" alt="Ibadan Apartment 3" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury Apartment in Agodi</h5>
+              <p class="airbnb-card-text">Oyo, Nigeria</p>
+              <p class="airbnb-card-price">$1,600/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (70 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+4&font=roboto" class="card-img-top" alt="Ibadan Apartment 4" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Spacious 3-Bed in Oluyole</h5>
+              <p class="airbnb-card-text">Oyo, Nigeria</p>
+              <p class="airbnb-card-price">$1,900/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.6 (75 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Oyo+Apt+5&font=roboto" class="card-img-top" alt="Ibadan Apartment 5" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Penthouse in Ring Road</h5>
+              <p class="airbnb-card-text">Oyo, Nigeria</p>
+              <p class="airbnb-card-price">$2,400/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.9 (50 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Oyo+Apt+6&font=roboto" class="card-img-top" alt="Ibadan Apartment 6" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern Loft in Challenge</h5>
+              <p class="airbnb-card-text">Oyo, Nigeria</p>
+              <p class="airbnb-card-price">$1,200/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (60 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties in Ekiti -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="wide-container">
+      <a href="/ekiti" class="section-title">Properties in Ekiti</a>
+      <div class="row g-4">
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+1&font=roboto" class="card-img-top" alt="Ekiti Apartment 1" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Cozy Studio in Ado Ekiti</h5>
+              <p class="airbnb-card-text">Ekiti, Nigeria</p>
+              <p class="airbnb-card-price">$500/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.4 (70 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+2&font=roboto" class="card-img-top" alt="Ekiti Apartment 2" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern 2-Bed in Ikere</h5>
+              <p class="airbnb-card-text">Ekiti, Nigeria</p>
+              <p class="airbnb-card-price">$900/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.6 (60 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+3&font=roboto" class="card-img-top" alt="Ekiti Apartment 3" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Luxury Apartment in Iyin</h5>
+              <p class="airbnb-card-text">Ekiti, Nigeria</p>
+              <p class="airbnb-card-price">$1,300/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.7 (55 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+4&font=roboto" class="card-img-top" alt="Ekiti Apartment 4" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Spacious 3-Bed in Oye</h5>
+              <p class="airbnb-card-text">Ekiti, Nigeria</p>
+              <p class="airbnb-card-price">$1,600/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.5 (65 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="500">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/d4af37/001f3f?text=Ekiti+Apt+5&font=roboto" class="card-img-top" alt="Ekiti Apartment 5" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Penthouse in Efon</h5>
+              <p class="airbnb-card-text">Ekiti, Nigeria</p>
+              <p class="airbnb-card-price">$2,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.8 (50 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-sm-12">
+          <div class="airbnb-card" data-aos="fade-up" data-aos-delay="600">
+            <div class="ratio ratio-4x3">
+              <img src="https://placehold.co/400x250/b8860b/001f3f?text=Ekiti+Apt+6&font=roboto" class="card-img-top" alt="Ekiti Apartment 6" loading="lazy">
+            </div>
+            <div class="airbnb-card-body">
+              <h5 class="airbnb-card-title">Modern Loft in Aramoko</h5>
+              <p class="airbnb-card-text">Ekiti, Nigeria</p>
+              <p class="airbnb-card-price">$1,000/month</p>
+              <div class="airbnb-card-rating">
+                <i class="fas fa-star"></i> 4.6 (55 reviews)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section py-5" data-aos="fade-up">
+    <div class="container">
+      <h2 class="text-center mb-4">What Our Clients Say</h2>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Testimonial 1"></button>
+              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1" aria-label="Testimonial 2"></button>
+              <button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="2" aria-label="Testimonial 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p>"A seamless experience finding my dream home!"</p>
+                    <div class="testimonial-author">
+                      <img src="https://placehold.co/50x50/d4af37/001f3f?text=Emily+R.&font=roboto" alt="Emily R." loading="lazy">
+                      <div>
+                        <h5>Emily R.</h5>
+                        <p>Homeowner</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p>"Professional service and stunning listings."</p>
+                    <div class="testimonial-author">
+                      <img src="https://placehold.co/50x50/b8860b/001f3f?text=Mark+T.&font=roboto" alt="Mark T." loading="lazy">
+                      <div>
+                        <h5>Mark T.</h5>
+                        <p>Renter</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p>"Highly recommend their services!"</p>
+                    <div class="testimonial-author">
+                      <img src="https://placehold.co/50x50/d4af37/001f3f?text=Sarah+L.&font=roboto" alt="Sarah L." loading="lazy">
+                      <div>
+                        <h5>Sarah L.</h5>
+                        <p>Homeowner</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section" data-aos="fade-up">
+    <div class="container">
+      <h2>Start Your Journey</h2>
+      <p>Discover luxury Homes, villas, penthouses, and land tailored to your needs.</p>
+      <a href="#" class="btn btn-primary" aria-label="Explore Properties Now">Explore Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" data-aos="fade-up">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6 footer-column">
+          <h5 class="footer-title">About HomeFinder</h5>
+          <p class="footer-text">We specialize in connecting you with elegant homes and land tailored to your lifestyle.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon facebook" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon twitter" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon instagram" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon whatsapp" aria-label="Follow us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-icon tiktok" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 footer-column">
+          <h5 class="footer-title">Quick Links</h5>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Listings</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 footer-column">
+          <h5 class="footer-title">Contact Us</h5>
+          <p class="footer-text"><i class="fas fa-phone me-1"></i> (123) 456-7890</p>
+          <p class="footer-text"><i class="fas fa-envelope me-1"></i> info@Homefinder.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- All Rights Reserved -->
+  <div class="rights-reserved">
+    <p class="mb-0">© 2025 HomeFinder. All Rights Reserved.</p>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 600,
+      once: true,
+    });
+  </script>
+</body>
+
+</html>
