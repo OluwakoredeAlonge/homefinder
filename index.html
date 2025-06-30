@@ -775,89 +775,94 @@
 
 <body>
   <!-- Header (Navbar + Search) -->
-  <header class="header" data-aos="fade-down">
-    <div class="header-container">
-      <nav class="navbar">
-        <a class="navbar-brand" href="#">
-          <img src="assets/logo.png" alt="HomeFinder Logo" class="navbar-logo">
-          HomeFinder
-        </a>
-        <ul class="navbar-nav d-none d-md-flex">
-          <li class="nav-item">
-            <a class="nav-link active" href="#" aria-current="page"><i class="fas fa-home"></i> Homes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-map"></i> Lands</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link profile-icon" href="#" aria-label="User Profile"><i class="fas fa-user"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Become a host</a>
-          </li>
-        </ul>
-        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Off-canvas for Navbar on Small Screens -->
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" href="#" aria-current="page"><i class="fas fa-home"></i> Homes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-map"></i> Lands</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Become a host</a>
-              </li>
-            </ul>
-          </div>
+<header class="header" data-aos="fade-down">
+  <div class="header-container">
+    <nav class="navbar">
+      <a class="navbar-brand" href="#">
+        <img src="assets/logo.png" alt="HomeFinder Logo" class="navbar-logo">
+        HomeFinder
+      </a>
+      <ul class="navbar-nav d-none d-md-flex">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" aria-current="page"><i class="fas fa-home"></i> Homes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-map"></i> Lands</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-icon" href="#" aria-label="User Profile"><i class="fas fa-user"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Become a host</a>
+        </li>
+      </ul>
+      <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Off-canvas for Navbar on Small Screens -->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="navbarOffcanvasLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </nav>
-      <div class="search-card" data-aos="fade-up" data-aos-delay="200">
-        <form class="search-form" id="search-form" aria-label="Search Properties">
-          <div class="input-group">
-            <span class="input-group-text" id="location-addon"><i class="fas fa-map-marker-alt"></i></span>
-            <input type="text" class="form-control" placeholder="Location" aria-label="Location" list="locations" aria-describedby="location-addon">
-            <datalist id="locations">
-              <option value="Lagos">
-              <option value="Abuja">
-              <option value="Rivers">
-              <option value="Kano">
-              <option value="Oyo">
-              <option value="Ekiti">
-            </datalist>
-          </div>
-          <div class="input-group">
-            <span class="input-group-text" id="min-price-addon"><i class="fas fa-money-bill-wave"></i></span>
-            <input type="number" class="form-control" placeholder="Min Price" aria-label="Minimum Price" aria-describedby="min-price-addon">
-          </div>
-          <div class="input-group">
-            <span class="input-group-text" id="max-price-addon"><i class="fas fa-money-bill-wave"></i></span>
-            <input type="number" class="form-control" placeholder="Max Price" aria-label="Maximum Price" aria-describedby="max-price-addon">
-          </div>
-          <div class="input-group">
-            <span class="input-group-text" id="amenities-addon"><i class="fas fa-concierge-bell"></i></span>
-            <select class="form-select" aria-label="Amenities" aria-describedby="amenities-addon">
-              <option selected>Amenities</option>
-              <option value="pool">Pool</option>
-              <option value="gym">Gym</option>
-              <option value="pet">Pet-Friendly</option>
-              <option value="smart">Smart Home</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary" aria-label="Search Properties">Search</button>
-        </form>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" aria-current="page"><i class="fas fa-home"></i> Homes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-map"></i> Lands</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Become a host</a>
+            </li>
+            <!-- Added Search Button -->
+            <li class="nav-item">
+              <button class="nav-link" id="search-button"><i class="fas fa-search"></i> Search</button>
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+    <!-- Modified Search Card with Close Button -->
+    <div class="search-card d-md-block d-none" data-aos="fade-up" data-aos-delay="200">
+      <button class="btn-close d-md-none" id="search-close" aria-label="Close Search"></button>
+      <form class="search-form" id="search-form" aria-label="Search Properties">
+        <div class="input-group">
+          <span class="input-group-text" id="location-addon"><i class="fas fa-map-marker-alt"></i></span>
+          <input type="text" class="form-control" placeholder="Location" aria-label="Location" list="locations" aria-describedby="location-addon">
+          <datalist id="locations">
+            <option value="Lagos">
+            <option value="Abuja">
+            <option value="Rivers">
+            <option value="Kano">
+            <option value="Oyo">
+            <option value="Ekiti">
+          </datalist>
+        </div>
+        <div class="input-group">
+          <span class="input-group-text" id="min-price-addon"><i class="fas fa-money-bill-wave"></i></span>
+          <input type="number" class="form-control" placeholder="Min Price" aria-label="Minimum Price" aria-describedby="min-price-addon">
+        </div>
+        <div class="input-group">
+          <span class="input-group-text" id="max-price-addon"><i class="fas fa-money-bill-wave"></i></span>
+          <input type="number" class="form-control" placeholder="Max Price" aria-label="Maximum Price" aria-describedby="max-price-addon">
+        </div>
+        <div class="input-group">
+          <span class="input-group-text" id="amenities-addon"><i class="fas fa-concierge-bell"></i></span>
+          <select class="form-select" aria-label="Amenities" aria-describedby="amenities-addon">
+            <option selected>Amenities</option>
+            <option value="pool">Pool</option>
+            <option value="gym">Gym</option>
+            <option value="pet">Pet-Friendly</option>
+            <option value="smart">Smart Home</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" aria-label="Search Properties">Search</button>
+      </form>
     </div>
-  </header>
-
+  </div>
+</header>
   <!-- Available Properties Section -->
   <section class="py-5" data-aos="fade-up">
     <div class="container">
@@ -1711,12 +1716,42 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS only if it’s loaded
+  if (typeof AOS !== 'undefined') {
     AOS.init({
       duration: 600,
       once: true,
     });
-  </script>
+  }
+</script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript for Search Bar Toggling -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchButton = document.getElementById('search-button');
+    const searchClose = document.getElementById('search-close');
+    const offcanvas = document.getElementById('navbarOffcanvas');
+    const searchCard = document.querySelector('.search-card');
+
+    if (searchButton && searchClose && offcanvas && searchCard) {
+      searchButton.addEventListener('click', function() {
+        const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas) || new bootstrap.Offcanvas(offcanvas);
+        offcanvasInstance.hide();
+        searchCard.classList.remove('d-none');
+      });
+
+      searchClose.addEventListener('click', function() {
+        searchCard.classList.add('d-none');
+      });
+    } else {
+      console.error('One or more elements not found:', { searchButton, searchClose, offcanvas, searchCard });
+    }
+  });
+</script>
 </body>
 
 </html>
