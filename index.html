@@ -770,6 +770,22 @@
         content: none;
       }
     }
+    .search-card .btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1001;
+  background-color: #fff;
+  opacity: 1;
+  padding: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .search-card {
+    position: relative;
+    margin-top: 1rem;
+  }
+}
   </style>
 </head>
 
@@ -1711,11 +1727,8 @@
   <div class="rights-reserved">
     <p class="mb-0">© 2025 HomeFinder. All Rights Reserved.</p>
   </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- AOS JS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -1727,8 +1740,6 @@
     });
   }
 </script>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Custom JavaScript for Search Bar Toggling -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -1736,19 +1747,41 @@
     const searchClose = document.getElementById('search-close');
     const offcanvas = document.getElementById('navbarOffcanvas');
     const searchCard = document.querySelector('.search-card');
+    const navbarToggler = document.querySelector('.navbar-toggler');
 
-    if (searchButton && searchClose && offcanvas && searchCard) {
+    if (searchButton && searchClose && offcanvas && searchCard && navbarToggler) {
       searchButton.addEventListener('click', function() {
         const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas) || new bootstrap.Offcanvas(offcanvas);
         offcanvasInstance.hide();
+
+        // Explicitly remove the backdrop
+        const backdrop = document.querySelector('.modal-backdrop');
+        if (backdrop) {
+          backdrop.remove();
+        }
+
+        // Remove body classes that Bootstrap adds
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+
+        // Reset navbar toggler state
+        navbarToggler.classList.remove('active');
+        navbarToggler.setAttribute('aria-expanded', 'false');
+
+        // Show search card and focus on the first input
         searchCard.classList.remove('d-none');
+        const firstInput = searchCard.querySelector('input');
+        if (firstInput) {
+          firstInput.focus();
+        }
       });
 
       searchClose.addEventListener('click', function() {
         searchCard.classList.add('d-none');
       });
     } else {
-      console.error('One or more elements not found:', { searchButton, searchClose, offcanvas, searchCard });
+      console.error('One or more elements not found:', { searchButton, searchClose, offcanvas, searchCard, navbarToggler });
     }
   });
 </script>
