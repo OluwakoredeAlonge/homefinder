@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - HomeFinder</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <style>
+    /* Inherit core styles from previous style.css */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #1a1a1a;
+  background-color: #f9fafb;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: #003087;
+}
+
+/* Header (Navbar) */
+.header {
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #d4af37;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 50px;
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: #003087;
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #f7f7f7;
+  color: #d4af37;
+  transform: translateY(-2px);
+}
+
+.nav-link i {
+  font-size: 1rem;
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  transition: transform 0.2s ease;
+  display: none;
+}
+
+.navbar-toggler:hover {
+  transform: scale(1.1);
+}
+
+.navbar-toggler span {
+  color: #003087;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 48, 135, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Off-canvas specific styles */
+.offcanvas {
+  height: 100vh !important;
+}
+
+.offcanvas .navbar-nav {
+  display: block;
+}
+
+.offcanvas .nav-link {
+  color: #003087;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  display: block;
+}
+
+.offcanvas .nav-link:hover {
+  background: #f7f7f7;
+  color: #d4af37;
+}
+
+/* Card Styles */
+.home-card {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.home-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.home-card .card-body {
+  padding: 1.5rem;
+}
+
+.home-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.25rem;
+}
+
+.home-card-text {
+  font-size: 0.85rem;
+  color: #4a5568;
+  margin-bottom: 0.25rem;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #003087;
+  margin-bottom: 1.5rem;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-icon {
+  font-size: 2rem;
+  color: #003087;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.home-card:hover .dashboard-icon {
+  color: #d4af37;
+}
+
+.dashboard-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-card-text {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+  min-height: 40px;
+}
+
+/* Terms and Privacy Content */
+.terms-content, .privacy-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.terms-content h3, .privacy-content h3 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.terms-content p, .privacy-content p {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+.terms-content ul, .privacy-content ul {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.terms-content a, .privacy-content a {
+  color: #d4af37;
+  text-decoration: underline;
+}
+
+.terms-content a:hover, .privacy-content a:hover {
+  color: #b8860b;
+}
+
+/* Message Sidebar */
+.message-sidebar {
+  background: #fff;
+  border-right: 1px solid #e2e8f0;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+}
+
+/* Message Threads */
+.message-thread {
+  cursor: pointer;
+}
+
+.message-thread:hover {
+  background: #f7f7f7;
+}
+
+.message-thread img {
+  width: 40px;
+  height: 40px;
+}
+
+.unread-indicator {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: #d4af37;
+  color: #001f3f;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Chat Area */
+.chat-area {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-area .home-card {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-area .card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Message Bubbles */
+.message-bubbles {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+.message-bubble {
+  max-width: 60%;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.message-bubble p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.message-bubble small {
+  font-size: 0.7rem;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.message-received {
+  background: #f1f5f9;
+  color: #1a1a1a;
+  margin-right: auto;
+  border-bottom-left-radius: 4px;
+}
+
+.message-sent {
+  background: #d4af37;
+  color: #001f3f;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+/* Message Input */
+.message-input {
+  min-height: 38px;
+  max-height: 150px;
+  line-height: 1.5;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.message-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+/* Form */
+.form-control {
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+}
+
+.form-control:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.btn-primary {
+  background: #d4af37;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  color: #001f3f;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #b8860b;
+  transform: scale(1.05);
+}
+
+.btn-outline-primary {
+  border-color: #d4af37;
+  color: #d4af37;
+  border-radius: 20px;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary.active {
+  background: #d4af37;
+  color: #001f3f;
+  transform: scale(1.05);
+}
+
+.btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+  border-radius: 20px;
+  padding: 0.25rem 0.5rem;
+}
+
+.btn-outline-danger:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+/* Minimal Footer */
+.footer-minimal {
+  background: #001f3f;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer-minimal p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.footer-link {
+  color: #e2e8f0;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: #d4af37;
+  text-decoration: underline;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  background-color: #1a1a1a;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] body {
+  background-color: #1a1a1a;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .header {
+  background: #2d2d2d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .navbar-brand {
+  color: #ffd700;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+  background: #3f3f3f;
+  color: #ffd700;
+}
+
+[data-theme="dark"] .navbar-toggler span {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(226, 232, 240, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] .offcanvas {
+  background: #2d2d2d;
+}
+
+[data-theme="dark"] .offcanvas .nav-link {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .offcanvas .nav-link:hover {
+  background: #3f3f3f;
+  color: #ffd700;
+}
+
+[data-theme="dark"] .message-sidebar {
+  background: #2d2d2d;
+  border-right: 1px solid #4a5568;
+}
+
+[data-theme="dark"] .home-card {
+  background: #2d2d2d;
+}
+
+[data-theme="dark"] .home-card-title {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .home-card-text {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .terms-content p,
+[data-theme="dark"] .terms-content ul,
+[data-theme="dark"] .privacy-content p,
+[data-theme="dark"] .privacy-content ul {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .terms-content a,
+[data-theme="dark"] .privacy-content a {
+  color: #ffd700;
+}
+
+[data-theme="dark"] .terms-content a:hover,
+[data-theme="dark"] .privacy-content a:hover {
+  color: #d4af37;
+}
+
+[data-theme="dark"] .dashboard-icon {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .home-card:hover .dashboard-icon {
+  color: #ffd700;
+}
+
+[data-theme="dark"] .dashboard-card-title {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .dashboard-card-text {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .message-thread:hover {
+  background: #3f3f3f;
+}
+
+[data-theme="dark"] .message-received {
+  background: #3f3f3f;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .message-sent {
+  background: #ffd700;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .unread-indicator {
+  background: #ffd700;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .form-control {
+  background: #3f3f3f;
+  color: #e2e8f0;
+  border-color: #4a5568;
+}
+
+[data-theme="dark"] .form-control:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+[data-theme="dark"] .btn-primary {
+  background: #ffd700;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background: #d4af37;
+}
+
+[data-theme="dark"] .btn-outline-primary {
+  border-color: #ffd700;
+  color: #ffd700;
+}
+
+[data-theme="dark"] .btn-outline-primary:hover,
+[data-theme="dark"] .btn-outline-primary.active {
+  background: #ffd700;
+  color: #1a1a1a;
+}
+
+[data-theme="dark"] .btn-outline-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+[data-theme="dark"] .btn-outline-danger:hover {
+  background: #dc3545;
+  color: #fff;
+}
+
+[data-theme="dark"] .footer-minimal {
+  background: #1a1a1a;
+}
+
+[data-theme="dark"] .footer-link {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .footer-link:hover {
+  color: #ffd700;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: #003087;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+[data-theme="dark"] .theme-toggle {
+  color: #ffd700;
+}
+
+.theme-toggle:hover {
+  color: #d4af37;
+  transform: scale(1.1);
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #d4af37;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+  .navbar-toggler {
+    display: none !important;
+  }
+  .message-threads {
+    display: block !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .dashboard-content .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-nav {
+    display: none;
+  }
+  .navbar-toggler {
+    display: block !important;
+  }
+  .message-sidebar {
+    display: none;
+  }
+  .chat-area {
+    height: calc(100vh - 70px);
+  }
+  .message-bubble {
+    max-width: 80%;
+  }
+  .terms-content h2, .privacy-content h2, .dashboard-content h2 {
+    font-size: 1.5rem;
+  }
+  .terms-content h3, .privacy-content h3, .dashboard-card-title {
+    font-size: 1.1rem;
+  }
+  .terms-content p, .terms-content ul,
+  .privacy-content p, .privacy-content ul,
+  .dashboard-card-text {
+    font-size: 0.9rem;
+  }
+  .footer-minimal p {
+    font-size: 0.85rem;
+  }
+  .footer-link {
+    display: block;
+    margin: 0.5rem 0;
+  }
+  .dashboard-content .col-sm-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-container {
+    padding: 0.25rem 0.5rem;
+  }
+  .navbar-logo {
+    height: 40px;
+  }
+  .navbar-brand {
+    font-size: 1rem;
+  }
+  .home-card-title {
+    font-size: 0.9rem;
+  }
+  .home-card-text {
+    font-size: 0.8rem;
+  }
+  .message-thread img {
+    width: 30px;
+    height: 30px;
+  }
+  .unread-indicator {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 0.65rem;
+  }
+  .message-bubble p {
+    font-size: 0.85rem;
+  }
+  .message-bubble small {
+    font-size: 0.65rem;
+  }
+  .message-input {
+    font-size: 0.85rem;
+    min-height: 34px;
+  }
+  .dashboard-icon {
+    font-size: 1.8rem;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <nav class="navbar">
+        <a class="navbar-brand" href="dashboard.html">
+          <img src="#" alt="HomeFinder Logo" class="navbar-logo">
+          HomeFinder
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span>Menu</span>
+        </button>
+        <div class="navbar-nav d-none d-lg-flex">
+          <a class="nav-link active" href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+          <a class="nav-link" href="listing.html"><i class="fas fa-building"></i> Listings</a>
+          <a class="nav-link" href="inbox.html"><i class="fas fa-envelope"></i> Messages</a>
+          <a class="nav-link" href="#"><i class="fas fa-user"></i> Profile</a>
+          <button class="theme-toggle" id="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </nav>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">HomeFinder</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="navbar-nav">
+            <a class="nav-link active" href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a class="nav-link" href="listing.html"><i class="fas fa-building"></i> Listings</a>
+            <a class="nav-link" href="inbox.html"><i class="fas fa-envelope"></i> Messages</a>
+            <a class="nav-link" href="#"><i class="fas fa-user"></i> Profile</a>
+            <button class="theme-toggle" id="theme-toggle-mobile">
+              <i class="fas fa-moon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <section class="dashboard-content">
+      <h2 class="section-title">User Dashboard</h2>
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="home-card text-center">
+            <div class="card-body">
+              <i class="fas fa-building dashboard-icon"></i>
+              <h3 class="dashboard-card-title">Property Listings</h3>
+              <p class="dashboard-card-text">Browse houses, lands, and apartments for sale or lease.</p>
+              <a href="listing.html" class="btn btn-primary">Browse Properties</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="home-card text-center">
+            <div class="card-body">
+              <i class="fas fa-receipt dashboard-icon"></i>
+              <h3 class="dashboard-card-title">Transactions</h3>
+              <p class="dashboard-card-text">View your purchase or lease history.</p>
+              <a href="transactions.html" class="btn btn-primary">View Transactions</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="home-card text-center">
+            <div class="card-body">
+              <i class="fas fa-envelope dashboard-icon"></i>
+              <h3 class="dashboard-card-title">Messages</h3>
+              <p class="dashboard-card-text">Communicate with agents and hosts about properties.</p>
+              <a href="inbox.html" class="btn btn-primary">View Messages</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="home-card text-center">
+            <div class="card-body">
+              <i class="fas fa-info-circle dashboard-icon"></i>
+              <h3 class="dashboard-card-title">About</h3>
+              <p class="dashboard-card-text">Learn about HomeFinder’s mission and services.</p>
+              <a href="about.html" class="btn btn-primary">View About</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="home-card text-center">
+            <div class="card-body">
+              <i class="fas fa-phone dashboard-icon"></i>
+              <h3 class="dashboard-card-title">Contact</h3>
+              <p class="dashboard-card-text">Reach out for support or inquiries.</p>
+              <a href="contact.html" class="btn btn-primary">Contact Us</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="home-card text-center">
+            <div class="card-body">
+              <i class="fas fa-question-circle dashboard-icon"></i>
+              <h3 class="dashboard-card-title">FAQ</h3>
+              <p class="dashboard-card-text">Find answers to common questions.</p>
+              <a href="faq.html" class="btn btn-primary">View FAQ</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="home-card text-center">
+            <div class="card-body">
+              <i class="fas fa-file-contract dashboard-icon"></i>
+              <h3 class="dashboard-card-title">Terms</h3>
+              <p class="dashboard-card-text">Review the platform’s terms of service.</p>
+              <a href="terms.html" class="btn btn-primary">View Terms</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="home-card text-center">
+            <div class="card-body">
+              <i class="fas fa-shield-alt dashboard-icon"></i>
+              <h3 class="dashboard-card-title">Privacy</h3>
+              <p class="dashboard-card-text">Understand our data protection policies.</p>
+              <a href="privacy.html" class="btn btn-primary">View Privacy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-minimal">
+    <div class="container text-center">
+      <p>© 2025 HomeFinder</p>
+      <a href="about.html" class="footer-link">About</a>
+      <a href="contact.html" class="footer-link">Contact</a>
+      <a href="terms.html" class="footer-link">Terms</a>
+      <a href="privacy.html" class="footer-link">Privacy</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const html = document.documentElement;
+    function toggleTheme() {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      const icon = isDark ? 'fa-moon' : 'fa-sun';
+      themeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
+      themeToggleMobile.innerHTML = `<i class="fas ${icon}"></i>`;
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggleMobile.addEventListener('click', toggleTheme);
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      html.setAttribute('data-theme', 'dark');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      themeToggleMobile.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+  </script>
+</body>
+</html>
