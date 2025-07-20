@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeFinder</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .skeleton-card {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    .skeleton-image, .skeleton-text {
+      background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .skeleton-card.hidden {
+      opacity: 0;
+      display: none;
+    }
+    .content-card {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .content-card.loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <header class="container-fluid">
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">HomeFinder</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Apartments</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Homes for Sale</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Lands for Sale</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Become a Host</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Theme</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section class="container my-5">
+    <h2>Find Your Dream Apartment</h2>
+    <div class="row">
+      <div class="col-md-3"><div class="card"><div class="card-body"><h5>1200+ Homes</h5></div></div></div>
+      <div class="col-md-3"><div class="card"><div class="card-body"><h5>300+ Villas</h5></div></div></div>
+      <div class="col-md-3"><div class="card"><div class="card-body"><h5>150+ Penthouses</h5></div></div></div>
+      <div class="col-md-3"><div class="card"><div class="card-body"><h5>200+ Land</h5></div></div></div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>Featured Properties</h2>
+    <div class="row" id="featured-properties">
+      <!-- Skeleton Cards (6 placeholders) -->
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Content (1 card, initially hidden) -->
+      <div class="col-md-4 content-card hidden">
+        <div class="card mb-3">
+          <img src="placeholder.jpg" class="card-img-top" alt="Property">
+          <div class="card-body">
+            <h5 class="card-title">Cozy Studio in Victoria Island</h5>
+            <p class="card-text">Lagos, Nigeria</p>
+            <p class="card-text">$900/month</p>
+            <p class="card-text">4.8 (120 reviews)</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>Stay in Lagos</h2>
+    <div class="row" id="stay-lagos">
+      <!-- Skeleton Cards (6 placeholders) -->
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Content (1 card, initially hidden) -->
+      <div class="col-md-4 content-card hidden">
+        <div class="card mb-3">
+          <img src="placeholder.jpg" class="card-img-top" alt="Property">
+          <div class="card-body">
+            <h5 class="card-title">Modern Apartment in Victoria Island</h5>
+            <p class="card-text">Lagos, Nigeria</p>
+            <p class="card-text">$1,200/month</p>
+            <p class="card-text">4.8 (120 reviews)</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>Available Next Month in Abuja</h2>
+    <div class="row" id="abuja-properties">
+      <!-- Skeleton Cards (6 placeholders) -->
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Content (1 card, initially hidden) -->
+      <div class="col-md-4 content-card hidden">
+        <div class="card mb-3">
+          <img src="placeholder.jpg" class="card-img-top" alt="Property">
+          <div class="card-body">
+            <h5 class="card-title">Modern Studio in Maitama</h5>
+            <p class="card-text">Abuja, Nigeria</p>
+            <p class="card-text">$1,000/month</p>
+            <p class="card-text">4.8 (90 reviews)</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>Homes in Port Harcourt</h2>
+    <div class="row" id="port-harcourt-properties">
+      <!-- Skeleton Cards (6 placeholders) -->
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Content (1 card, initially hidden) -->
+      <div class="col-md-4 content-card hidden">
+        <div class="card mb-3">
+          <img src="placeholder.jpg" class="card-img-top" alt="Property">
+          <div class="card-body">
+            <h5 class="card-title">Cozy Studio in GRA</h5>
+            <p class="card-text">Rivers, Nigeria</p>
+            <p class="card-text">$850/month</p>
+            <p class="card-text">4.6 (100 reviews)</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>Properties in Kano</h2>
+    <div class="row" id="kano-properties">
+      <!-- Skeleton Cards (6 placeholders) -->
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Content (1 card, initially hidden) -->
+      <div class="col-md-4 content-card hidden">
+        <div class="card mb-3">
+          <img src="placeholder.jpg" class="card-img-top" alt="Property">
+          <div class="card-body">
+            <h5 class="card-title">Cozy Studio in Nassarawa</h5>
+            <p class="card-text">Kano, Nigeria</p>
+            <p class="card-text">$700/month</p>
+            <p class="card-text">4.5 (90 Reviews)</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>Homes in Ibadan</h2>
+    <div class="row" id="ibadan-properties">
+      <!-- Skeleton Cards (6 placeholders) -->
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Content (1 card, initially hidden) -->
+      <div class="col-md-4 content-card hidden">
+        <div class="card mb-3">
+          <img src="placeholder.jpg" class="card-img-top" alt="Property">
+          <div class="card-body">
+            <h5 class="card-title">Cozy Studio in Bodija</h5>
+            <p class="card-text">Oyo, Nigeria</p>
+            <p class="card-text">$600/month</p>
+            <p class="card-text">4.5 (80 reviews)</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>Properties in Ekiti</h2>
+    <div class="row" id="ekiti-properties">
+      <!-- Skeleton Cards (6 placeholders) -->
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 skeleton-card" aria-hidden="true">
+        <div class="card mb-3">
+          <div class="skeleton-image" style="height: 200px;"></div>
+          <div class="card-body">
+            <div class="skeleton-text" style="height: 20px; width: 80%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 60%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 40%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 15px; width: 50%; margin-bottom: 10px;"></div>
+            <div class="skeleton-text" style="height: 25px; width: 30%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Content (1 card, initially hidden) -->
+      <div class="col-md-4 content-card hidden">
+        <div class="card mb-3">
+          <img src="placeholder.jpg" class="card-img-top" alt="Property">
+          <div class="card-body">
+            <h5 class="card-title">Cozy Studio in Ado Ekiti</h5>
+            <p class="card-text">Ekiti, Nigeria</p>
+            <p class="card-text">$500/month</p>
+            <p class="card-text">4.4 (70 reviews)</p>
+            <a href="#" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>What Our Clients Say</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <p>"A seamless experience finding my dream home!"</p>
+            <p><strong>Emily R.</strong><br>Homeowner</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <p>"Professional service and stunning listings."</p>
+            <p><strong>Mark T.</strong><br>Renter</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <p>"Highly recommend their services!"</p>
+            <p><strong>Sarah L.</strong><br>Homeowner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container my-5">
+    <h2>Start Your Journey</h2>
+    <p>Discover luxury Homes, villas, penthouses, and land tailored to your needs.</p>
+    <a href="#" class="btn btn-primary">Explore Now</a>
+  </section>
+
+  <footer class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>About HomeFinder</h5>
+        <p>We specialize in connecting you with elegant homes and land tailored to your lifestyle.</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Listings</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact Us</h5>
+        <p>(123) 456-7890</p>
+        <p>info@Homefinder.com</p>
+      </div>
+    </div>
+    <p>© 2025 HomeFinder. All Rights Reserved.</p>
+    <a href="#">More Information</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Function to handle loading for a given section
+    function loadSection(sectionId) {
+      const skeletonCards = document.querySelectorAll(`#${sectionId} .skeleton-card`);
+      const contentCards = document.querySelectorAll(`#${sectionId} .content-card`);
+      
+      setTimeout(() => {
+        // Hide skeleton cards
+        skeletonCards.forEach(card => {
+          card.classList.add('hidden');
+        });
+        // Show real content
+        contentCards.forEach(card => {
+          card.classList.remove('hidden');
+          card.classList.add('loaded');
+        });
+      }, 2000); // Simulate 2-second delay
+    }
+
+    // Initialize loading for all apartment listing sections
+    window.addEventListener('load', () => {
+      loadSection('featured-properties');
+      loadSection('stay-lagos');
+      loadSection('abuja-properties');
+      loadSection('port-harcourt-properties');
+      loadSection('kano-properties');
+      loadSection('ibadan-properties');
+      loadSection('ekiti-properties');
+    });
+  </script>
+</body>
+</html>
