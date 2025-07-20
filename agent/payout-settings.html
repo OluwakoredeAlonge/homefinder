@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeFinder - Payout Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 0.5s ease-out'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-gradient-to-r from-blue-100 to-gray-100 dark:from-gray-800 dark:to-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+    <div class="flex min-h-screen relative">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-gray-800 shadow transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50 md:static md:flex md:flex-col">
+            <div class="flex items-center justify-between p-4">
+                <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">HomeFinder</a>
+                <button id="menu-toggle" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col flex-1 p-4 space-y-4">
+              <nav class="flex flex-col space-y-4">
+                    <a href="overview.html" class="flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                    <div class="relative">
+                        <button id="listings-toggle" class="flex items-center space-x-2 w-full hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                            </svg>
+                            <span>Listings</span>
+                            <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="listings-dropdown" class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-10">
+                           
+                            <a href="create-house-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Create House Listing</a>
+                            <a href="create-land-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Create Land Listing</a>
+                            <a href="manage-house-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Manage House Listings</a>
+                            <a href="manage-land-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Manage Land Listings</a>
+                        </div>
+                    </div>
+                    <a href="messages.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                        </svg>
+                        <span>Messages</span>
+                    </a>
+                    <a href="lead-management.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <span>Lead Management</span>
+                    </a>
+                    <a href="profile.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        <span>Profile</span>
+                    </a>
+                    <a href="settings.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span>Settings</span>
+                    </a>
+                    <a href="notifications.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                        <span>Notifications</span>
+                        <span id="unread-count" class="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full hidden"></span>
+                    </a>
+                    <a href="billing.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Billing</span>
+                    </a>
+                    <a href="billing-history.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span>Billing History</span>
+                    </a>
+                    <a href="transaction-history.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span>Transaction History</span>
+                    </a>
+                    <a href="payout-settings.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                        </svg>
+                        <span>Payout Settings</span>
+                    </a>
+                    <a href="lead-management.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <span>Lead Management</span>
+                    </a>
+                </nav>
+                <div class="mt-auto">
+                    <hr class="border-gray-200 dark:border-gray-700">
+                    <nav class="flex flex-col space-y-4 mt-4">
+                        <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>About</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Contact</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span>Terms</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4zm0 0c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4zm0 0c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4z"></path>
+                            </svg>
+                            <span>Privacy</span>
+                        </a>
+                        <div class="flex items-center space-x-2">
+                            <button id="theme-toggle" class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                                <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                                <span>Theme</span>
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">© 2025 HomeFinder</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main id="main-content" class="flex-1 p-8 md:pl-68 relative">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold">Payout Settings</h1>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2">Configure bank details for transaction payouts</p>
+                </div>
+                <button id="menu-open" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="notification-container" class="fixed top-4 right-4 space-y-2 z-50"></div>
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6 animate-fadeIn">
+                    <div class="flex items-center mb-4">
+                        <h2 class="text-xl font-semibold">Bank Details</h2>
+                        <span id="verification-status" class="ml-4 text-green-500"><i class="fas fa-check-circle"></i> Verified</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="bank-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bank Name</label>
+                            <select id="bank-name" class="mt-1 block w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                                <option value="">Select Bank</option>
+                                <option value="GTBank">GTBank</option>
+                                <option value="Zenith">Zenith Bank</option>
+                                <option value="Access">Access Bank</option>
+                                <option value="FirstBank">FirstBank</option>
+                                <option value="UBA">United Bank for Africa</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="account-number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Account Number</label>
+                            <input type="text" id="account-number" placeholder="Enter account number" class="mt-1 block w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                        <div>
+                            <label for="account-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Account Name</label>
+                            <input type="text" id="account-name" placeholder="Enter account name" class="mt-1 block w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                        <div>
+                            <label for="bvn" class="block text-sm font-medium text-gray-700 dark:text-gray-300">BVN (Optional)</label>
+                            <input type="text" id="bvn" placeholder="Enter BVN" class="mt-1 block w-full p-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                    </div>
+                    <button id="save-payout" class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300">Save Bank Details</button>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 animate-fadeIn">
+                    <h2 class="text-xl font-semibold mb-4">Payout History</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="text-gray-600 dark:text-gray-400">
+                                    <th class="p-4">Date</th>
+                                    <th class="p-4">Bank</th>
+                                    <th class="p-4">Account Number</th>
+                                    <th class="p-4">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="payout-history-table">
+                                <tr class="border-t dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4">2025-07-20</td>
+                                    <td class="p-4">GTBank</td>
+                                    <td class="p-4">0123456789</td>
+                                    <td class="p-4">Added</td>
+                                </tr>
+                                <tr class="border-t dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <td class="p-4">2025-07-15</td>
+                                    <td class="p-4">Zenith Bank</td>
+                                    <td class="p-4">9876543210</td>
+                                    <td class="p-4">Updated</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Navigation
+            const sidebar = document.getElementById('sidebar');
+            const menuOpen = document.getElementById('menu-open');
+            const menuToggle = document.getElementById('menu-toggle');
+
+            if (!sidebar || !menuOpen || !menuToggle) {
+                console.error('One or more DOM elements are missing:', {
+                    sidebar: !!sidebar,
+                    menuOpen: !!menuOpen,
+                    menuToggle: !!menuToggle
+                });
+                return;
+            }
+
+            menuOpen.addEventListener('click', () => {
+                sidebar.classList.remove('-translate-x-full');
+            });
+
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('-translate-x-full');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth < 768 && !sidebar.contains(e.target) && !menuOpen.contains(e.target) && !menuToggle.contains(e.target)) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            });
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeToggle && themeIcon) {
+                const toggleTheme = () => {
+                    document.documentElement.classList.toggle('dark');
+                    if (document.documentElement.classList.contains('dark')) {
+                        themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>';
+                        localStorage.setItem('theme', 'light');
+                    }
+                };
+                themeToggle.addEventListener('click', toggleTheme);
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>';
+                }
+            }
+
+            // Dropdown Toggle (Listings)
+            const listingsToggle = document.getElementById('listings-toggle');
+            const listingsDropdown = document.getElementById('listings-dropdown');
+            if (listingsToggle && listingsDropdown) {
+                listingsToggle.addEventListener('click', () => {
+                    listingsDropdown.classList.toggle('hidden');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!listingsToggle.contains(e.target) && !listingsDropdown.contains(e.target)) {
+                        listingsDropdown.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Notification System
+            const notificationContainer = document.getElementById('notification-container');
+            function showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = `p-4 rounded-lg shadow-lg flex items-center justify-between transition-all duration-300 transform translate-y-0 opacity-100 ${
+                    type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+                }`;
+                notification.innerHTML = `
+                    <span>${message}</span>
+                    <button class="ml-4 text-white hover:text-gray-200 focus:outline-none" onclick="this.parentElement.remove()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                `;
+                notificationContainer.appendChild(notification);
+                setTimeout(() => {
+                    notification.classList.add('opacity-0', '-translate-y-2');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+
+            // Unread Notification Counter
+            const unreadCountBadge = document.getElementById('unread-count');
+            let notifications = JSON.parse(localStorage.getItem('notifications')) || [
+                { id: 1, message: 'New message received from John Doe', timestamp: '2025-07-20 13:00:00', read: false, link: 'messages.html' },
+                { id: 2, message: 'Documents submitted for verification', timestamp: '2025-07-20 12:30:00', read: false, link: 'settings.html' },
+                { id: 3, message: 'Identity verification approved', timestamp: '2025-07-20 12:00:00', read: true, link: 'settings.html' },
+                { id: 4, message: 'New lead: John Doe (Score: 85)', timestamp: '2025-07-20 11:00:00', read: false, link: 'lead-management.html' }
+            ];
+
+            function updateUnreadCount() {
+                const unreadCount = notifications.filter(n => !n.read).length;
+                unreadCountBadge.textContent = unreadCount;
+                unreadCountBadge.classList.toggle('hidden', unreadCount === 0);
+            }
+
+            function saveNotifications() {
+                localStorage.setItem('notifications', JSON.stringify(notifications));
+            }
+
+            // Payout Settings
+            let payoutSettings = JSON.parse(localStorage.getItem('payoutSettings')) || {
+                bankName: 'GTBank',
+                accountNumber: '0123456789',
+                accountName: 'John Doe',
+                bvn: '',
+                verificationStatus: 'Verified',
+                history: [
+                    { id: 1, date: '2025-07-20', bank: 'GTBank', accountNumber: '0123456789', action: 'Added' },
+                    { id: 2, date: '2025-07-15', bank: 'Zenith Bank', accountNumber: '9876543210', action: 'Updated' }
+                ]
+            };
+
+            function renderPayoutHistory() {
+                const tableBody = document.getElementById('payout-history-table');
+                tableBody.innerHTML = '';
+                payoutSettings.history.forEach(entry => {
+                    const row = document.createElement('tr');
+                    row.className = 'border-t dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700';
+                    row.innerHTML = `
+                        <td class="p-4">${entry.date}</td>
+                        <td class="p-4">${entry.bank}</td>
+                        <td class="p-4">${entry.accountNumber}</td>
+                        <td class="p-4">${entry.action}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            function loadPayoutSettings() {
+                document.getElementById('bank-name').value = payoutSettings.bankName || '';
+                document.getElementById('account-number').value = payoutSettings.accountNumber || '';
+                document.getElementById('account-name').value = payoutSettings.accountName || '';
+                document.getElementById('bvn').value = payoutSettings.bvn || '';
+                document.getElementById('verification-status').innerHTML = `
+                    <i class="fas fa-check-circle"></i> ${payoutSettings.verificationStatus}
+                `;
+                document.getElementById('verification-status').className = `ml-4 ${payoutSettings.verificationStatus === 'Verified' ? 'text-green-500' : 'text-yellow-500'}`;
+                renderPayoutHistory();
+            }
+
+            document.getElementById('save-payout').addEventListener('click', () => {
+                const bankName = document.getElementById('bank-name').value;
+                const accountNumber = document.getElementById('account-number').value;
+                const accountName = document.getElementById('account-name').value;
+                const bvn = document.getElementById('bvn').value;
+
+                // Basic validation
+                if (!bankName || !accountNumber || !accountName) {
+                    showNotification('Please fill in all required fields', 'error');
+                    return;
+                }
+                if (!/^\d{10}$/.test(accountNumber)) {
+                    showNotification('Account number must be 10 digits', 'error');
+                    return;
+                }
+                if (bvn && !/^\d{11}$/.test(bvn)) {
+                    showNotification('BVN must be 11 digits if provided', 'error');
+                    return;
+                }
+
+                // Mock Paystack/Flutterwave verification
+                const isNewAccount = payoutSettings.accountNumber !== accountNumber;
+                payoutSettings = {
+                    bankName,
+                    accountNumber,
+                    accountName,
+                    bvn,
+                    verificationStatus: isNewAccount ? 'Pending' : payoutSettings.verificationStatus,
+                    history: [
+                        ...payoutSettings.history,
+                        {
+                            id: payoutSettings.history.length + 1,
+                            date: new Date().toISOString().slice(0, 10),
+                            bank: bankName,
+                            accountNumber,
+                            action: isNewAccount ? 'Added' : 'Updated'
+                        }
+                    ]
+                };
+
+                localStorage.setItem('payoutSettings', JSON.stringify(payoutSettings));
+                loadPayoutSettings();
+                showNotification('Bank details saved successfully', 'success');
+                notifications.push({
+                    id: notifications.length + 1,
+                    message: `Bank details updated: ${bankName} (${accountNumber})`,
+                    timestamp: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                    read: false,
+                    link: 'payout-settings.html'
+                });
+                saveNotifications();
+                updateUnreadCount();
+
+                // Mock verification delay
+                if (isNewAccount) {
+                    setTimeout(() => {
+                        payoutSettings.verificationStatus = 'Verified';
+                        localStorage.setItem('payoutSettings', JSON.stringify(payoutSettings));
+                        loadPayoutSettings();
+                        showNotification('Bank account verified successfully', 'success');
+                        notifications.push({
+                            id: notifications.length + 1,
+                            message: 'Bank account verified',
+                            timestamp: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                            read: false,
+                            link: 'payout-settings.html'
+                        });
+                        saveNotifications();
+                        updateUnreadCount();
+                    }, 3000);
+                }
+            });
+
+            // Initial render
+            updateUnreadCount();
+            loadPayoutSettings();
+        });
+    </script>
+</body>
+</html>

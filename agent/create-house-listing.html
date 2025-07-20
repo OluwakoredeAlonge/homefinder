@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,21 +15,26 @@
         }
     </script>
 </head>
+
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
     <div class="flex min-h-screen">
-        <aside class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-gray-800 shadow transform md:translate-x-0 -translate-x-full transition-transform duration-300 ease-in-out md:static md:flex md:flex-col z-50">
+        <aside
+            class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-gray-800 shadow transform md:translate-x-0 -translate-x-full transition-transform duration-300 ease-in-out md:static md:flex md:flex-col z-50">
             <div class="flex items-center justify-between p-4">
                 <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">HomeFinder</a>
-                <button id="menu-toggle" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                <button id="menu-toggle"
+                    class="md:hidden text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
             </div>
             <div class="flex flex-col flex-1 p-4 space-y-4">
-             <!-- Updated Navigation Section -->
-   <nav class="flex flex-col space-y-4">
-                    <a href="overview.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                <!-- Updated Navigation Section -->
+           <nav class="flex flex-col space-y-4">
+                    <a href="overview.html" class="flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-600 dark:hover:text-blue-400">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
@@ -45,7 +51,7 @@
                             </svg>
                         </button>
                         <div id="listings-dropdown" class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-10">
-                            <!-- <a href="overview.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">View Listings</a> -->
+                           
                             <a href="create-house-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Create House Listing</a>
                             <a href="create-land-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Create Land Listing</a>
                             <a href="manage-house-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Manage House Listings</a>
@@ -58,11 +64,11 @@
                         </svg>
                         <span>Messages</span>
                     </a>
-                    <a href="host-properties.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="lead-management.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                         </svg>
-                        <span>Host Properties</span>
+                        <span>Lead Management</span>
                     </a>
                     <a href="profile.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -77,68 +83,112 @@
                         </svg>
                         <span>Settings</span>
                     </a>
-                    <a href="notifications.html" class="flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="notifications.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
                         </svg>
                         <span>Notifications</span>
                         <span id="unread-count" class="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full hidden"></span>
                     </a>
+                    <a href="billing.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>Billing</span>
+                    </a>
+                    <a href="billing-history.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span>Billing History</span>
+                    </a>
+                    <a href="transaction-history.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                        <span>Transaction History</span>
+                    </a>
+                    <a href="payout-settings.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                        </svg>
+                        <span>Payout Settings</span>
+                    </a>
+                    <a href="lead-management.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <span>Lead Management</span>
+                    </a>
                 </nav>
+                <!-- JavaScript for Dropdown Toggle (to be added to existing <script> section) -->
+                <script>
+                    // Dropdown Toggle
+                    const listingsToggle = document.getElementById('listings-toggle');
+                    const listingsDropdown = document.getElementById('listings-dropdown');
+                    listingsToggle.addEventListener('click', () => {
+                        listingsDropdown.classList.toggle('hidden');
+                    });
 
-<!-- JavaScript for Dropdown Toggle (to be added to existing <script> section) -->
-<script>
-    // Dropdown Toggle
-    const listingsToggle = document.getElementById('listings-toggle');
-    const listingsDropdown = document.getElementById('listings-dropdown');
-    listingsToggle.addEventListener('click', () => {
-        listingsDropdown.classList.toggle('hidden');
-    });
+                    // Close dropdown when clicking outside
+                    document.addEventListener('click', (e) => {
+                        if (!listingsToggle.contains(e.target) && !listingsDropdown.contains(e.target)) {
+                            listingsDropdown.classList.add('hidden');
+                        }
+                    });
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!listingsToggle.contains(e.target) && !listingsDropdown.contains(e.target)) {
-            listingsDropdown.classList.add('hidden');
-        }
-    });
-
-    // Highlight Listings menu item based on current page
-    const currentPath = window.location.pathname.split('/').pop();
-    if (['overview.html', 'create-house-listing.html', 'create-land-listing.html'].includes(currentPath)) {
-        listingsToggle.classList.add('text-blue-600', 'dark:text-blue-400', 'font-semibold');
-    }
-</script>
+                    // Highlight Listings menu item based on current page
+                    const currentPath = window.location.pathname.split('/').pop();
+                    if (['overview.html', 'create-house-listing.html', 'create-land-listing.html'].includes(currentPath)) {
+                        listingsToggle.classList.add('text-blue-600', 'dark:text-blue-400', 'font-semibold');
+                    }
+                </script>
                 <div class="mt-auto">
                     <hr class="border-gray-200 dark:border-gray-700">
                     <nav class="flex flex-col space-y-4 mt-4">
                         <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                             <span>About</span>
                         </a>
                         <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
                             </svg>
                             <span>Contact</span>
                         </a>
                         <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                </path>
                             </svg>
                             <span>Terms</span>
                         </a>
                         <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4zm0 0c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4zm0 0c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4z"></path>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 11c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4zm0 0c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4zm0 0c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4z">
+                                </path>
                             </svg>
                             <span>Privacy</span>
                         </a>
                         <div class="flex items-center space-x-2">
-                            <button id="theme-toggle" class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-                                <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                            <button id="theme-toggle"
+                                class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                                <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                                    </path>
                                 </svg>
                                 <span>Theme</span>
                             </button>
@@ -153,18 +203,24 @@
         <main class="flex-1 p-4 md:pl-68">
             <div class="flex items-center justify-between mb-6 md:hidden">
                 <h1 class="text-3xl font-bold">Create New Property Listing</h1>
-                <button id="menu-open" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                <button id="menu-open"
+                    class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
             </div>
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
                 <div class="flex items-center justify-between mb-6">
                     <h1 class="text-3xl font-bold hidden md:block">Create New Property Listing</h1>
-                    <a href="overview.html" class="text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    <a href="overview.html"
+                        class="text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
                         </svg>
                         <span>Back to Listings</span>
                     </a>
@@ -174,14 +230,21 @@
                         <h3 class="text-lg font-semibold mb-4">Basic Information</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Title <span class="text-red-500">*</span></label>
-                                <input type="text" id="title" name="title" maxlength="100" required class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., 3-Bedroom Family Home in Lagos">
+                                <label for="title"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Title <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="title" name="title" maxlength="100" required
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                    placeholder="e.g., 3-Bedroom Family Home in Lagos">
                                 <p id="title-counter" class="text-sm text-gray-500 mt-1">0/100 characters</p>
                                 <p id="title-error" class="text-sm text-red-500 mt-1 hidden">Title is required</p>
                             </div>
                             <div>
-                                <label for="property-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Property Type <span class="text-red-500">*</span></label>
-                                <select id="property-type" name="property-type" required class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
+                                <label for="property-type"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Property Type
+                                    <span class="text-red-500">*</span></label>
+                                <select id="property-type" name="property-type" required
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
                                     <option value="" disabled selected>Select property type</option>
                                     <option value="house">House</option>
                                     <option value="apartment">Apartment</option>
@@ -190,40 +253,64 @@
                                     <option value="duplex">Duplex</option>
                                     <option value="bungalow">Bungalow</option>
                                 </select>
-                                <p id="property-type-error" class="text-sm text-red-500 mt-1 hidden">Property type is required</p>
+                                <p id="property-type-error" class="text-sm text-red-500 mt-1 hidden">Property type is
+                                    required</p>
                             </div>
                         </div>
                         <div class="mt-4">
-                            <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description <span class="text-red-500">*</span></label>
-                            <textarea id="description" name="description" maxlength="1000" rows="5" required class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="Describe the property in detail..."></textarea>
+                            <label for="description"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description <span
+                                    class="text-red-500">*</span></label>
+                            <textarea id="description" name="description" maxlength="1000" rows="5" required
+                                class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                placeholder="Describe the property in detail..."></textarea>
                             <p id="description-counter" class="text-sm text-gray-500 mt-1">0/1000 characters</p>
-                            <p id="description-error" class="text-sm text-red-500 mt-1 hidden">Description is required</p>
+                            <p id="description-error" class="text-sm text-red-500 mt-1 hidden">Description is required
+                            </p>
                         </div>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Location</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Address <span class="text-red-500">*</span></label>
-                                <input type="text" id="address" name="address" required class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., 123 Victoria Island">
+                                <label for="address"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Address <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="address" name="address" required
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                    placeholder="e.g., 123 Victoria Island">
                                 <p id="address-error" class="text-sm text-red-500 mt-1 hidden">Address is required</p>
                             </div>
                             <div>
-                                <label for="city" class="block text-sm font-medium text-gray-700 dark:text-gray-300">City <span class="text-red-500">*</span></label>
-                                <input type="text" id="city" name="city" required class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., Lagos">
+                                <label for="city"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">City <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="city" name="city" required
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                    placeholder="e.g., Lagos">
                                 <p id="city-error" class="text-sm text-red-500 mt-1 hidden">City is required</p>
                             </div>
                             <div>
-                                <label for="state" class="block text-sm font-medium text-gray-700 dark:text-gray-300">State</label>
-                                <input type="text" id="state" name="state" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., Lagos State">
+                                <label for="state"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">State</label>
+                                <input type="text" id="state" name="state"
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                    placeholder="e.g., Lagos State">
                             </div>
                             <div>
-                                <label for="zip" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Postal Code</label>
-                                <input type="text" id="zip" name="zip" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., 101241">
+                                <label for="zip"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Postal
+                                    Code</label>
+                                <input type="text" id="zip" name="zip"
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                    placeholder="e.g., 101241">
                             </div>
                             <div>
-                                <label for="country" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Country <span class="text-red-500">*</span></label>
-                                <select id="country" name="country" required class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
+                                <label for="country"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Country <span
+                                        class="text-red-500">*</span></label>
+                                <select id="country" name="country" required
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
                                     <option value="" disabled selected>Select country</option>
                                     <option value="NG">Nigeria</option>
                                     <option value="US">United States</option>
@@ -239,13 +326,20 @@
                         <h3 class="text-lg font-semibold mb-4">Property Details</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="price" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Price (NGN) <span class="text-red-500">*</span></label>
-                                <input type="number" id="price" name="price" min="0" required class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., 50000000">
-                                <p id="price-error" class="text-sm text-red-500 mt-1 hidden">Price must be a positive number</p>
+                                <label for="price"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Price (NGN) <span
+                                        class="text-red-500">*</span></label>
+                                <input type="number" id="price" name="price" min="0" required
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                    placeholder="e.g., 50000000">
+                                <p id="price-error" class="text-sm text-red-500 mt-1 hidden">Price must be a positive
+                                    number</p>
                             </div>
                             <div>
-                                <label for="bedrooms" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bedrooms</label>
-                                <select id="bedrooms" name="bedrooms" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
+                                <label for="bedrooms"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bedrooms</label>
+                                <select id="bedrooms" name="bedrooms"
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
                                     <option value="" disabled selected>Select number</option>
                                     <option value="0">0</option>
                                     <option value="1">1</option>
@@ -261,8 +355,10 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="bathrooms" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bathrooms</label>
-                                <select id="bathrooms" name="bathrooms" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
+                                <label for="bathrooms"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bathrooms</label>
+                                <select id="bathrooms" name="bathrooms"
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
                                     <option value="" disabled selected>Select number</option>
                                     <option value="0">0</option>
                                     <option value="0.5">0.5</option>
@@ -278,12 +374,20 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="house-size" class="block text-sm font-medium text-gray-700 dark:text-gray-300">House Size (sq ft)</label>
-                                <input type="number" id="house-size" name="house-size" min="0" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., 2000">
+                                <label for="house-size"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">House Size (sq
+                                    ft)</label>
+                                <input type="number" id="house-size" name="house-size" min="0"
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                    placeholder="e.g., 2000">
                             </div>
                             <div>
-                                <label for="year-built" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Year Built</label>
-                                <input type="number" id="year-built" name="year-built" min="1800" max="2025" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., 1990">
+                                <label for="year-built"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Year
+                                    Built</label>
+                                <input type="number" id="year-built" name="year-built" min="1800" max="2025"
+                                    class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                                    placeholder="e.g., 1990">
                             </div>
                         </div>
                     </div>
@@ -291,182 +395,229 @@
                         <h3 class="text-lg font-semibold mb-4">Features</h3>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="garage" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="garage"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Garage</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="basement" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="basement"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Basement</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="attic" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="attic"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Attic</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="balcony" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="balcony"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Balcony</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="deck" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="deck"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Deck</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="patio" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="patio"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Patio</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="porch" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="porch"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Porch</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="air-conditioning" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="air-conditioning"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Air Conditioning</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="central-heating" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="central-heating"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Central Heating</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="fireplace" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="fireplace"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Fireplace</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="hardwood-floors" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="hardwood-floors"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Hardwood Floors</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="carpeted-floors" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="carpeted-floors"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Carpeted Floors</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="tile-flooring" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="tile-flooring"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Tile Flooring</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="walk-in-closet" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="walk-in-closet"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Walk-in Closet</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="ensuite-bathroom" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="ensuite-bathroom"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Ensuite Bathroom</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="open-plan-layout" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="open-plan-layout"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Open Plan Layout</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="kitchen-island" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="kitchen-island"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Kitchen Island</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="granite-countertops" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="granite-countertops"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Granite Countertops</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="pool" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="pool"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Pool</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="garden" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="garden"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Garden</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="fenced-yard" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="fenced-yard"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Fenced Yard</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="waterfront" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="waterfront"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Waterfront</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="private-driveway" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="private-driveway"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Private Driveway</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="carport" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="carport"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Carport</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="sprinkler-system" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="sprinkler-system"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Sprinkler System</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="solar-panels" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="solar-panels"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Solar Panels</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="well-water" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="well-water"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Well Water</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="septic-system" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="septic-system"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Septic System</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="generator" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="generator"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Generator</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="security-system" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="security-system"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Security System</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="recently-renovated" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="recently-renovated"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Recently Renovated</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="new-construction" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="new-construction"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">New Construction</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="energy-efficient" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="energy-efficient"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Energy Efficient</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="wheelchair-accessible" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="wheelchair-accessible"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Wheelchair Accessible</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="elevator" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="elevator"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Elevator</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="gated-community" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="gated-community"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Gated Community</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="guest-house" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="guest-house"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Guest House</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="home-office" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="home-office"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Home Office</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="gym" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="gym"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Gym</span>
                             </label>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" name="features" value="sauna" class="form-checkbox text-blue-600 focus:ring-blue-500">
+                                <input type="checkbox" name="features" value="sauna"
+                                    class="form-checkbox text-blue-600 focus:ring-blue-500">
                                 <span class="ml-2 text-gray-700 dark:text-gray-300">Sauna</span>
                             </label>
                         </div>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Images</h3>
-                        <label for="images" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Upload Images (Max 10)</label>
-                        <input type="file" id="images" name="images" multiple accept="image/*" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
+                        <label for="images" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Upload
+                            Images (Max 10)</label>
+                        <input type="file" id="images" name="images" multiple accept="image/*"
+                            class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700">
                         <p class="text-sm text-gray-500 mt-1">Accepted formats: JPG, PNG, GIF</p>
                         <div id="image-preview" class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4"></div>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold mb-4">Additional Notes</h3>
-                        <textarea id="notes" name="notes" maxlength="500" rows="4" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700" placeholder="e.g., Recently renovated kitchen..."></textarea>
+                        <textarea id="notes" name="notes" maxlength="500" rows="4"
+                            class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700"
+                            placeholder="e.g., Recently renovated kitchen..."></textarea>
                         <p id="notes-counter" class="text-sm text-gray-500 mt-1">0/500 characters</p>
                     </div>
                     <div class="flex space-x-4">
-                        <button type="submit" id="save-button" disabled class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed">Save Listing</button>
-                        <a href="overview.html" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-700">Cancel</a>
+                        <button type="submit" id="save-button" disabled
+                            class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed">Save
+                            Listing</button>
+                        <a href="overview.html"
+                            class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-700">Cancel</a>
                     </div>
                 </form>
             </div>
@@ -611,4 +762,5 @@
         });
     </script>
 </body>
+
 </html>
