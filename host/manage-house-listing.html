@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeFinder - Manage House Listings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+    <div class="flex min-h-screen relative">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-white dark:bg-gray-800 shadow transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50 md:static md:flex md:flex-col">
+            <div class="flex items-center justify-between p-4">
+                <a href="#" class="text-2xl font-bold text-blue-600 dark:text-blue-400">HomeFinder</a>
+                <button id="menu-toggle" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col flex-1 p-4 space-y-4">
+                <nav class="flex flex-col space-y-4">
+                    <a href="overview.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                    <div class="relative">
+                        <button id="listings-toggle" class="flex items-center space-x-2 w-full text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                            </svg>
+                            <span>Listings</span>
+                            <svg class="w-4 h-4 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="listings-dropdown" class="hidden absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-10">
+                            <a href="overview.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">View Listings</a>
+                            <a href="create-house-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Create House Listing</a>
+                            <a href="manage-house-listing.html" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 font-semibold">Manage House Listings</a>
+                        </div>
+                    </div>
+                    <a href="messages.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                        </svg>
+                        <span>Messages</span>
+                    </a>
+                    <a href="host-properties.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path>
+                        </svg>
+                        <span>Host Properties</span>
+                    </a>
+                    <a href="profile.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        <span>Profile</span>
+                    </a>
+                    <a href="settings.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span>Settings</span>
+                    </a>
+                    <a href="notifications.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                        <span>Notifications</span>
+                        <span id="unread-count" class="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full hidden"></span>
+                    </a>
+                    <a href="billing.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M5 5h14m-6 3h6m-1 4h-4m-6 8h12m-9.586-.414l4.829 4.829m1.757-1.757l-4.829-4.829m4.828 1.758l1.414-1.414M3 3l3.087 3.087"></path>
+                        </svg>
+                        <span>Billing</span>
+                    </a>
+                    <a href="billing-history.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M5 5h14m-6 3h6m-1 4h-4m-6 8h12m-9.586-.414l4.829 4.829m1.757-1.757l-4.829-4.829m4.828 1.758l1.414-1.414M3 3l3.087 3.087"></path>
+                        </svg>
+                        <span>Billing History</span>
+                    </a>
+                    <a href="transaction-history.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M5 5h14m-6 3h6m-1 4h-4m-6 8h12m-9.586-.414l4.829 4.829m1.757-1.757l-4.829-4.829m4.828 1.758l1.414-1.414M3 3l3.087 3.087"></path>
+                        </svg>
+                        <span>Transaction History</span>
+                    </a>
+                    <a href="payout-settings.html" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18M5 5h14m-6 3h6m-1 4h-4m-6 8h12m-9.586-.414l4.829 4.829m1.757-1.757l-4.829-4.829m4.828 1.758l1.414-1.414M3 3l3.087 3.087"></path>
+                        </svg>
+                        <span>Payout Settings</span>
+                    </a>
+                </nav>
+                <div class="mt-auto">
+                    <hr class="border-gray-200 dark:border-gray-700">
+                    <nav class="flex flex-col space-y-4 mt-4">
+                        <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>About</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Contact</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span>Terms</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-2 hover:text-blue-600 dark:hover:text-blue-400">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4zm0 0c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4zm0 0c0 1.104-.896 2-2 2s-2-.896-2-2 2-4 2-4 2 2.896 2 4z"></path>
+                            </svg>
+                            <span>Privacy</span>
+                        </a>
+                        <div class="flex items-center space-x-2">
+                            <button id="theme-toggle" class="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                                <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                                <span>Theme</span>
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="p-4">
+                        <p class="text-gray-600 dark:text-gray-300 text-sm">© 2025 HomeFinder</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main id="main-content" class="flex-1 p-4 md:pl-68 relative">
+            <div class="flex items-center justify-between mb-6">
+                <h1 class="text-2xl font-bold">Manage House Listings</h1>
+                <button id="menu-open" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="notification-container" class="fixed top-4 right-4 space-y-2 z-50"></div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow w-full">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-4">Your House Listings</h2>
+                    <div class="overflow-x-auto">
+                        <table id="listings-table" class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Title</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Address</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Price (USD/month)</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Bedrooms</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Bathrooms</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listings-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700"></tbody>
+                        </table>
+                    </div>
+                    <div id="empty-state" class="hidden text-center py-4 text-gray-500 dark:text-gray-400">No house listings found.</div>
+                </div>
+            </div>
+            <!-- Edit Modal -->
+            <div id="edit-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div id="modal-overlay" class="absolute inset-0"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-lg shadow max-w-3xl w-full p-6 overflow-y-auto max-h-[80vh]">
+                    <h2 class="text-xl font-semibold mb-4">Edit House Listing</h2>
+                    <form id="edit-listing-form" enctype="multipart/form-data">
+                        <input type="hidden" id="edit-id">
+                        <div class="mb-4">
+                            <label for="edit-title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Title</label>
+                            <input type="text" id="edit-title" class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="edit-address" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Address</label>
+                            <input type="text" id="edit-address" class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="edit-price" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Lease Price (per month, USD)</label>
+                            <input type="number" id="edit-price" min="0" step="0.01" class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="edit-bedrooms" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bedrooms</label>
+                            <input type="number" id="edit-bedrooms" min="0" class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="edit-bathrooms" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Bathrooms</label>
+                            <input type="number" id="edit-bathrooms" min="0" step="0.5" class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="edit-square-footage" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Square Footage</label>
+                            <input type="number" id="edit-square-footage" min="0" class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Amenities</label>
+                            <button type="button" id="edit-select-all-amenities" class="mb-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Select All</button>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-wifi" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Wi-Fi</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-parking" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Parking</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-ac" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Air Conditioning</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-pool" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Pool</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-heating" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Heating</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-washer-dryer" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Washer/Dryer</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-kitchen" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Kitchen</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-balcony" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Balcony</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-pet-friendly" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Pet-Friendly</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-furnished" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Furnished</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-gym" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Gym</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-elevator" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Elevator</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-dishwasher" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Dishwasher</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="edit-fireplace" class="h-4 w-4 text-blue-600 focus:ring-blue-600 border-gray-300 dark:border-gray-600 rounded">
+                                    <span class="text-sm text-gray-700 dark:text-gray-300">Fireplace</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="edit-description" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
+                            <textarea id="edit-description" rows="4" class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600" required></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="edit-images" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Images (JPEG/PNG, max 5MB each)</label>
+                            <input type="file" id="edit-images" accept="image/jpeg,image/png" multiple class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        </div>
+                        <div class="mb-4">
+                            <label for="edit-availability-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Availability Date</label>
+                            <input type="date" id="edit-availability-date" class="mt-1 p-2 w-full rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        <div class="flex space-x-4">
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Save Changes</button>
+                            <button type="button" id="cancel-edit" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Navigation
+            const sidebar = document.getElementById('sidebar');
+            const menuOpen = document.getElementById('menu-open');
+            const menuToggle = document.getElementById('menu-toggle');
+
+            if (!sidebar || !menuOpen || !menuToggle) {
+                console.error('One or more DOM elements are missing:', {
+                    sidebar: !!sidebar,
+                    menuOpen: !!menuOpen,
+                    menuToggle: !!menuToggle
+                });
+                return;
+            }
+
+            menuOpen.addEventListener('click', () => {
+                console.log('Menu open clicked');
+                sidebar.classList.remove('-translate-x-full');
+            });
+
+            menuToggle.addEventListener('click', () => {
+                console.log('Menu toggle clicked');
+                sidebar.classList.add('-translate-x-full');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth < 768 && !sidebar.contains(e.target) && !menuOpen.contains(e.target) && !menuToggle.contains(e.target)) {
+                    console.log('Outside click detected');
+                    sidebar.classList.add('-translate-x-full');
+                }
+            });
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            if (themeToggle && themeIcon) {
+                const toggleTheme = () => {
+                    document.documentElement.classList.toggle('dark');
+                    if (document.documentElement.classList.contains('dark')) {
+                        themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>';
+                        localStorage.setItem('theme', 'light');
+                    }
+                };
+                themeToggle.addEventListener('click', toggleTheme);
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>';
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    themeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>';
+                }
+            }
+
+            // Dropdown Toggle (Listings)
+            const listingsToggle = document.getElementById('listings-toggle');
+            const listingsDropdown = document.getElementById('listings-dropdown');
+            if (listingsToggle && listingsDropdown) {
+                listingsToggle.addEventListener('click', () => {
+                    listingsDropdown.classList.toggle('hidden');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!listingsToggle.contains(e.target) && !listingsDropdown.contains(e.target)) {
+                        listingsDropdown.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Notification System
+            const notificationContainer = document.getElementById('notification-container');
+            function showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = `p-4 rounded-lg shadow-lg flex items-center justify-between transition-all duration-300 transform translate-y-0 opacity-100 ${
+                    type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+                }`;
+                notification.innerHTML = `
+                    <span>${message}</span>
+                    <button class="ml-4 text-white hover:text-gray-200 focus:outline-none" onclick="this.parentElement.remove()">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                `;
+                notificationContainer.appendChild(notification);
+                setTimeout(() => {
+                    notification.classList.add('opacity-0', '-translate-y-2');
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+
+            // Unread Notification Counter
+            const unreadCountBadge = document.getElementById('unread-count');
+            let notifications = JSON.parse(localStorage.getItem('notifications')) || [
+                { id: 1, message: 'New message received from John Doe', timestamp: '2025-07-20 13:00:00', read: false, link: 'messages.html' },
+                { id: 2, message: 'Documents submitted for verification', timestamp: '2025-07-20 12:30:00', read: false, link: 'settings.html' },
+                { id: 3, message: 'Identity verification approved', timestamp: '2025-07-20 12:00:00', read: true, link: 'settings.html' },
+                { id: 4, message: 'New listing created: Lekki Villa', timestamp: '2025-07-20 11:00:00', read: false, link: 'manage-house-listing.html' }
+            ];
+
+            function updateUnreadCount() {
+                const unreadCount = notifications.filter(n => !n.read).length;
+                unreadCountBadge.textContent = unreadCount;
+                unreadCountBadge.classList.toggle('hidden', unreadCount === 0);
+            }
+
+            function saveNotifications() {
+                localStorage.setItem('notifications', JSON.stringify(notifications));
+            }
+
+            // Initial counter update
+            updateUnreadCount();
+
+            // Listings Table
+            const listingsBody = document.getElementById('listings-body');
+            const emptyState = document.getElementById('empty-state');
+            let listings = JSON.parse(localStorage.getItem('houseListings')) || [];
+
+            // Initialize placeholder data for exactly 5 listings
+            if (listings.length < 5) {
+                listings = [
+                    {
+                        id: Date.now() + 1,
+                        title: 'Cozy Downtown Cottage',
+                        address: '123 Main St, Lagos',
+                        price: 1500,
+                        bedrooms: 2,
+                        bathrooms: 1.5,
+                        squareFootage: 1200,
+                        amenities: { wifi: true, parking: true, ac: true, pool: false, heating: true, washerDryer: true, kitchen: true, balcony: false, petFriendly: true, furnished: true, gym: false, elevator: false, dishwasher: true, fireplace: false },
+                        description: 'A charming cottage in the heart of Lagos.',
+                        images: ['cottage.jpg'],
+                        availabilityDate: '2025-08-01',
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: Date.now() + 2,
+                        title: 'Modern Lekki Villa',
+                        address: '456 Ocean Rd, Lekki',
+                        price: 2500,
+                        bedrooms: 3,
+                        bathrooms: 2,
+                        squareFootage: 1800,
+                        amenities: { wifi: true, parking: true, ac: true, pool: true, heating: false, washerDryer: true, kitchen: true, balcony: true, petFriendly: false, furnished: false, gym: true, elevator: true, dishwasher: true, fireplace: true },
+                        description: 'Luxurious villa with stunning ocean views.',
+                        images: ['villa.jpg'],
+                        availabilityDate: '2025-09-01',
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: Date.now() + 3,
+                        title: 'Suburban Family Home',
+                        address: '789 Pine Ave, Ikeja',
+                        price: 2000,
+                        bedrooms: 4,
+                        bathrooms: 2.5,
+                        squareFootage: 2200,
+                        amenities: { wifi: true, parking: true, ac: false, pool: false, heating: true, washerDryer: true, kitchen: true, balcony: false, petFriendly: true, furnished: true, gym: false, elevator: false, dishwasher: false, fireplace: true },
+                        description: 'Spacious home perfect for families.',
+                        images: ['family_home.jpg'],
+                        availabilityDate: '2025-07-25',
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: Date.now() + 4,
+                        title: 'Urban Loft',
+                        address: '101 City Rd, Victoria Island',
+                        price: 1800,
+                        bedrooms: 1,
+                        bathrooms: 1,
+                        squareFootage: 900,
+                        amenities: { wifi: true, parking: false, ac: true, pool: false, heating: true, washerDryer: false, kitchen: true, balcony: true, petFriendly: false, furnished: true, gym: true, elevator: true, dishwasher: true, fireplace: false },
+                        description: 'Stylish loft in the bustling city center.',
+                        images: ['loft.jpg'],
+                        availabilityDate: '2025-08-15',
+                        createdAt: new Date().toISOString()
+                    },
+                    {
+                        id: Date.now() + 5,
+                        title: 'Beachfront Bungalow',
+                        address: '321 Coastal Dr, Lekki',
+                        price: 2200,
+                        bedrooms: 2,
+                        bathrooms: 2,
+                        squareFootage: 1400,
+                        amenities: { wifi: true, parking: true, ac: true, pool: true, heating: false, washerDryer: true, kitchen: true, balcony: true, petFriendly: true, furnished: true, gym: false, elevator: false, dishwasher: true, fireplace: false },
+                        description: 'Cozy bungalow with direct beach access.',
+                        images: ['bungalow.jpg'],
+                        availabilityDate: '2025-08-10',
+                        createdAt: new Date().toISOString()
+                    }
+                ];
+                localStorage.setItem('houseListings', JSON.stringify(listings));
+            }
+
+            function renderListings() {
+                listingsBody.innerHTML = '';
+                // Limit to 5 data rows
+                const displayListings = listings.slice(0, 5);
+                if (displayListings.length === 0) {
+                    emptyState.classList.remove('hidden');
+                    return;
+                }
+                emptyState.classList.add('hidden');
+                displayListings.forEach(listing => {
+                    const status = new Date(listing.availabilityDate) >= new Date() ? 'Active' : 'Inactive';
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">${listing.title}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">${listing.address}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">$${listing.price.toFixed(2)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">${listing.bedrooms}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">${listing.bathrooms}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">${status}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <button class="edit-btn bg-blue-600 text-white p-2 rounded hover:bg-blue-700 mr-2" data-id="${listing.id}"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn bg-red-600 text-white p-2 rounded hover:bg-red-700" data-id="${listing.id}"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    `;
+                    listingsBody.appendChild(row);
+                });
+            }
+
+            // Initial render
+            renderListings();
+
+            // Edit Modal
+            const editModal = document.getElementById('edit-modal');
+            const editForm = document.getElementById('edit-listing-form');
+            const cancelEdit = document.getElementById('cancel-edit');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const selectAllAmenities = document.getElementById('edit-select-all-amenities');
+            const amenityCheckboxes = document.querySelectorAll('input[type="checkbox"][id^="edit-"]');
+
+            function openEditModal(listing) {
+                document.getElementById('edit-id').value = listing.id;
+                document.getElementById('edit-title').value = listing.title;
+                document.getElementById('edit-address').value = listing.address;
+                document.getElementById('edit-price').value = listing.price;
+                document.getElementById('edit-bedrooms').value = listing.bedrooms;
+                document.getElementById('edit-bathrooms').value = listing.bathrooms;
+                document.getElementById('edit-square-footage').value = listing.squareFootage;
+                document.getElementById('edit-description').value = listing.description;
+                document.getElementById('edit-availability-date').value = listing.availabilityDate;
+                ['wifi', 'parking', 'ac', 'pool', 'heating', 'washer-dryer', 'kitchen', 'balcony', 'pet-friendly', 'furnished', 'gym', 'elevator', 'dishwasher', 'fireplace'].forEach(amenity => {
+                    document.getElementById(`edit-${amenity}`).checked = listing.amenities[amenity.replace('-', '')] || false;
+                });
+                const allChecked = Array.from(amenityCheckboxes).every(checkbox => checkbox.checked);
+                selectAllAmenities.textContent = allChecked ? 'Deselect All' : 'Select All';
+                editModal.classList.remove('hidden');
+            }
+
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === modalOverlay) {
+                        editModal.classList.add('hidden');
+                    }
+                });
+            }
+
+            if (selectAllAmenities && amenityCheckboxes.length > 0) {
+                selectAllAmenities.addEventListener('click', () => {
+                    const allChecked = Array.from(amenityCheckboxes).every(checkbox => checkbox.checked);
+                    amenityCheckboxes.forEach(checkbox => {
+                        checkbox.checked = !allChecked;
+                    });
+                    selectAllAmenities.textContent = allChecked ? 'Select All' : 'Deselect All';
+                });
+            }
+
+            listingsBody.addEventListener('click', (e) => {
+                if (e.target.closest('.edit-btn')) {
+                    const id = parseInt(e.target.closest('.edit-btn').dataset.id);
+                    const listing = listings.find(l => l.id === id);
+                    if (listing) {
+                        openEditModal(listing);
+                    }
+                } else if (e.target.closest('.delete-btn')) {
+                    const id = parseInt(e.target.closest('.delete-btn').dataset.id);
+                    if (confirm('Are you sure you want to delete this listing?')) {
+                        listings = listings.filter(l => l.id !== id);
+                        localStorage.setItem('houseListings', JSON.stringify(listings));
+                        notifications.push({
+                            id: notifications.length + 1,
+                            message: `Listing deleted successfully`,
+                            timestamp: new Date().toISOString(),
+                            read: false,
+                            link: 'manage-house-listing.html'
+                        });
+                        saveNotifications();
+                        updateUnreadCount();
+                        showNotification('Listing deleted successfully!', 'success');
+                        renderListings();
+                    }
+                }
+            });
+
+            if (editForm && cancelEdit) {
+                editForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const id = parseInt(document.getElementById('edit-id').value);
+                    const title = document.getElementById('edit-title').value;
+                    const address = document.getElementById('edit-address').value;
+                    const price = parseFloat(document.getElementById('edit-price').value);
+                    const bedrooms = parseInt(document.getElementById('edit-bedrooms').value);
+                    const bathrooms = parseFloat(document.getElementById('edit-bathrooms').value);
+                    const squareFootage = parseInt(document.getElementById('edit-square-footage').value);
+                    const amenities = {
+                        wifi: document.getElementById('edit-wifi').checked,
+                        parking: document.getElementById('edit-parking').checked,
+                        ac: document.getElementById('edit-ac').checked,
+                        pool: document.getElementById('edit-pool').checked,
+                        heating: document.getElementById('edit-heating').checked,
+                        washerDryer: document.getElementById('edit-washer-dryer').checked,
+                        kitchen: document.getElementById('edit-kitchen').checked,
+                        balcony: document.getElementById('edit-balcony').checked,
+                        petFriendly: document.getElementById('edit-pet-friendly').checked,
+                        furnished: document.getElementById('edit-furnished').checked,
+                        gym: document.getElementById('edit-gym').checked,
+                        elevator: document.getElementById('edit-elevator').checked,
+                        dishwasher: document.getElementById('edit-dishwasher').checked,
+                        fireplace: document.getElementById('edit-fireplace').checked
+                    };
+                    const description = document.getElementById('edit-description').value;
+                    const images = document.getElementById('edit-images').files;
+                    const availabilityDate = document.getElementById('edit-availability-date').value;
+
+                    // Client-side validation
+                    if (!title || !address || !price || !bedrooms || !bathrooms || !squareFootage || !description || !availabilityDate) {
+                        showNotification('All required fields must be filled.', 'error');
+                        return;
+                    }
+                    if (price < 0) {
+                        showNotification('Lease price cannot be negative.', 'error');
+                        return;
+                    }
+                    if (bedrooms < 0) {
+                        showNotification('Bedrooms cannot be negative.', 'error');
+                        return;
+                    }
+                    if (bathrooms < 0) {
+                        showNotification('Bathrooms cannot be negative.', 'error');
+                        return;
+                    }
+                    if (squareFootage < 0) {
+                        showNotification('Square footage cannot be negative.', 'error');
+                        return;
+                    }
+                    const allowedTypes = ['image/jpeg', 'image/png'];
+                    const maxSize = 5 * 1024 * 1024; // 5MB
+                    for (let image of images) {
+                        if (image && !allowedTypes.includes(image.type)) {
+                            showNotification('Images must be JPEG or PNG.', 'error');
+                            return;
+                        }
+                        if (image && image.size > maxSize) {
+                            showNotification('Each image must be less than 5MB.', 'error');
+                            return;
+                        }
+                    }
+                    if (new Date(availabilityDate) < new Date()) {
+                        showNotification('Availability date must be in the future.', 'error');
+                        return;
+                    }
+
+                    // Update listing
+                    const updatedListing = {
+                        id,
+                        title,
+                        address,
+                        price,
+                        bedrooms,
+                        bathrooms,
+                        squareFootage,
+                        amenities,
+                        description,
+                        images: images.length > 0 ? Array.from(images).map(image => image.name) : listings.find(l => l.id === id).images,
+                        availabilityDate,
+                        createdAt: listings.find(l => l.id === id).createdAt
+                    };
+                    listings = listings.map(l => l.id === id ? updatedListing : l);
+                    localStorage.setItem('houseListings', JSON.stringify(listings));
+                    notifications.push({
+                        id: notifications.length + 1,
+                        message: `Listing updated: ${title}`,
+                        timestamp: new Date().toISOString(),
+                        read: false,
+                        link: 'manage-house-listing.html'
+                    });
+                    saveNotifications();
+                    updateUnreadCount();
+                    showNotification('Listing updated successfully!', 'success');
+                    editModal.classList.add('hidden');
+                    renderListings();
+                });
+
+                cancelEdit.addEventListener('click', () => {
+                    editModal.classList.add('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
